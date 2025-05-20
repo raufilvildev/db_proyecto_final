@@ -30,6 +30,7 @@ CREATE TABLE IF NOT EXISTS `db_proyecto_final`.`user` (
   `username` VARCHAR(50) CHARACTER SET 'utf8mb4' COLLATE 'utf8mb4_0900_ai_ci' NOT NULL,
   `password` VARCHAR(200) CHARACTER SET 'utf8mb4' COLLATE 'utf8mb4_0900_ai_ci' NOT NULL,
   `is_notified_by_email` TINYINT UNSIGNED NOT NULL DEFAULT '1',
+  `is_confirmed_email` TINYINT UNSIGNED NOT NULL DEFAULT '0',
   `token` VARCHAR(6) NULL DEFAULT NULL,
   `created_at` TIMESTAMP NOT NULL,
   `updated_at` TIMESTAMP NOT NULL,
@@ -37,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `db_proyecto_final`.`user` (
   UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE,
   UNIQUE INDEX `username_UNIQUE` (`username` ASC) VISIBLE)
 ENGINE = InnoDB
-AUTO_INCREMENT = 35
+AUTO_INCREMENT = 38
 DEFAULT CHARACTER SET = utf8mb3;
 
 
