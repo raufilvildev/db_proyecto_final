@@ -36,7 +36,7 @@ CREATE TABLE `courses` (
   UNIQUE KEY `uuid` (`uuid`),
   KEY `fk_courses_teacher_id_idx` (`teacher_id`),
   CONSTRAINT `fk_courses_teacher_id` FOREIGN KEY (`teacher_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -45,6 +45,7 @@ CREATE TABLE `courses` (
 
 LOCK TABLES `courses` WRITE;
 /*!40000 ALTER TABLE `courses` DISABLE KEYS */;
+INSERT INTO `courses` VALUES (1,'cc167bb4-45f1-11f0-af55-99dd8a19e019',2,'Curso de SQL','Aprende SQL desde cero',NULL,NULL,'2025-06-10 11:55:26','2025-06-10 11:55:26'),(2,'cc167fc4-45f1-11f0-af55-99dd8a19e019',5,'Curso de JavaScript','JavaScript para principiantes',NULL,NULL,'2025-06-10 11:55:26','2025-06-10 11:55:26'),(3,'cc1680f0-45f1-11f0-af55-99dd8a19e019',2,'Curso de Git','Control de versiones con Git',NULL,NULL,'2025-06-10 11:55:26','2025-06-10 11:55:26'),(4,'cc16819a-45f1-11f0-af55-99dd8a19e019',5,'Curso de HTML','Introducción al desarrollo web',NULL,NULL,'2025-06-10 11:55:26','2025-06-10 11:55:26'),(5,'cc168230-45f1-11f0-af55-99dd8a19e019',2,'Curso de CSS','Estilos y diseño web',NULL,NULL,'2025-06-10 11:55:26','2025-06-10 11:55:26');
 /*!40000 ALTER TABLE `courses` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -66,7 +67,7 @@ CREATE TABLE `enrollments` (
   KEY `fk_enrollments_course_id_idx` (`course_id`),
   CONSTRAINT `fk_enrollments_course_id` FOREIGN KEY (`course_id`) REFERENCES `courses` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_enrollments_student_id` FOREIGN KEY (`student_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -75,6 +76,7 @@ CREATE TABLE `enrollments` (
 
 LOCK TABLES `enrollments` WRITE;
 /*!40000 ALTER TABLE `enrollments` DISABLE KEYS */;
+INSERT INTO `enrollments` VALUES (1,1,1,'2025-06-10 11:55:26'),(2,1,2,'2025-06-10 11:55:26'),(3,3,1,'2025-06-10 11:55:26'),(4,3,4,'2025-06-10 11:55:26'),(5,4,5,'2025-06-10 11:55:26');
 /*!40000 ALTER TABLE `enrollments` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -99,7 +101,7 @@ CREATE TABLE `forum_posts` (
   KEY `fk_forum_posts_user_id_idx` (`user_id`),
   CONSTRAINT `fk_forum_posts_thread_id` FOREIGN KEY (`thread_id`) REFERENCES `forum_threads` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_forum_posts_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -108,6 +110,7 @@ CREATE TABLE `forum_posts` (
 
 LOCK TABLES `forum_posts` WRITE;
 /*!40000 ALTER TABLE `forum_posts` DISABLE KEYS */;
+INSERT INTO `forum_posts` VALUES (1,'cc179490-45f1-11f0-af55-99dd8a19e019',1,2,'Puedes usar AND y OR. Ej: WHERE x=1 AND y=2','2025-06-10 11:55:26','2025-06-10 11:55:26'),(2,'cc17968e-45f1-11f0-af55-99dd8a19e019',2,5,'La principal diferencia es el manejo del this','2025-06-10 11:55:26','2025-06-10 11:55:26'),(3,'cc179760-45f1-11f0-af55-99dd8a19e019',3,2,'Stash guarda cambios temporales','2025-06-10 11:55:26','2025-06-10 11:55:26'),(4,'cc1797e2-45f1-11f0-af55-99dd8a19e019',4,5,'<article> sirve para contenido independiente','2025-06-10 11:55:26','2025-06-10 11:55:26'),(5,'cc17985a-45f1-11f0-af55-99dd8a19e019',5,2,'Grid es mejor para layouts grandes','2025-06-10 11:55:26','2025-06-10 11:55:26');
 /*!40000 ALTER TABLE `forum_posts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -133,7 +136,7 @@ CREATE TABLE `forum_threads` (
   KEY `fk_forum_threads_user_id_idx` (`user_id`),
   CONSTRAINT `fk_forum_threads_course_id` FOREIGN KEY (`course_id`) REFERENCES `courses` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_forum_threads_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -142,6 +145,7 @@ CREATE TABLE `forum_threads` (
 
 LOCK TABLES `forum_threads` WRITE;
 /*!40000 ALTER TABLE `forum_threads` DISABLE KEYS */;
+INSERT INTO `forum_threads` VALUES (1,'cc177672-45f1-11f0-af55-99dd8a19e019',1,1,'Pregunta sobre SELECT','¿Cómo uso WHERE con múltiples condiciones?','2025-06-10 11:55:26','2025-06-10 11:55:26'),(2,'cc177834-45f1-11f0-af55-99dd8a19e019',2,3,'Duda sobre funciones JS','¿Qué diferencia hay entre funciones normales y flecha?','2025-06-10 11:55:26','2025-06-10 11:55:26'),(3,'cc177906-45f1-11f0-af55-99dd8a19e019',3,1,'¿Qué es Git stash?','No entiendo cómo funciona stash','2025-06-10 11:55:26','2025-06-10 11:55:26'),(4,'cc177988-45f1-11f0-af55-99dd8a19e019',4,3,'HTML semantic tags','¿Para qué sirve <article>?','2025-06-10 11:55:26','2025-06-10 11:55:26'),(5,'cc177a00-45f1-11f0-af55-99dd8a19e019',5,1,'CSS Grid vs Flexbox','¿Cuándo usar cada uno?','2025-06-10 11:55:26','2025-06-10 11:55:26');
 /*!40000 ALTER TABLE `forum_threads` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -166,7 +170,7 @@ CREATE TABLE `pomodoro` (
   UNIQUE KEY `uuid` (`uuid`),
   KEY `fk_pomodoro_user_id_idx` (`user_id`),
   CONSTRAINT `fk_pomodoro_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -175,6 +179,7 @@ CREATE TABLE `pomodoro` (
 
 LOCK TABLES `pomodoro` WRITE;
 /*!40000 ALTER TABLE `pomodoro` DISABLE KEYS */;
+INSERT INTO `pomodoro` VALUES (1,'cc174ba2-45f1-11f0-af55-99dd8a19e019',1,25,'00:05:00',1,25,'2025-06-10 11:55:26','2025-06-10 11:55:26'),(2,'cc174d8c-45f1-11f0-af55-99dd8a19e019',3,50,'00:10:00',1,50,'2025-06-10 11:55:26','2025-06-10 11:55:26'),(3,'cc174e36-45f1-11f0-af55-99dd8a19e019',4,25,'00:05:00',0,0,'2025-06-10 11:55:26','2025-06-10 11:55:26'),(4,'cc174ea4-45f1-11f0-af55-99dd8a19e019',1,25,'00:05:00',1,25,'2025-06-10 11:55:26','2025-06-10 11:55:26'),(5,'cc174f12-45f1-11f0-af55-99dd8a19e019',3,25,'00:05:00',1,25,'2025-06-10 11:55:26','2025-06-10 11:55:26');
 /*!40000 ALTER TABLE `pomodoro` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -199,7 +204,7 @@ CREATE TABLE `private_messages` (
   KEY `fk_private_messages_receiver_id_idx` (`receiver_id`),
   CONSTRAINT `fk_private_messages_receiver_id` FOREIGN KEY (`receiver_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_private_messages_sender_id` FOREIGN KEY (`sender_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -208,6 +213,7 @@ CREATE TABLE `private_messages` (
 
 LOCK TABLES `private_messages` WRITE;
 /*!40000 ALTER TABLE `private_messages` DISABLE KEYS */;
+INSERT INTO `private_messages` VALUES (1,'cc17b5e2-45f1-11f0-af55-99dd8a19e019',1,2,'Hola, tengo una duda del curso','2025-06-10 11:55:26','2025-06-10 11:55:26'),(2,'cc17b8bc-45f1-11f0-af55-99dd8a19e019',3,5,'¿Puedes revisar mi ejercicio?','2025-06-10 11:55:26','2025-06-10 11:55:26'),(3,'cc17b9b6-45f1-11f0-af55-99dd8a19e019',4,2,'Gracias por la clase','2025-06-10 11:55:26','2025-06-10 11:55:26'),(4,'cc17ba42-45f1-11f0-af55-99dd8a19e019',1,5,'¿Habrá clase el viernes?','2025-06-10 11:55:26','2025-06-10 11:55:26'),(5,'cc17bac4-45f1-11f0-af55-99dd8a19e019',3,2,'¿Podemos hacer una tutoría?','2025-06-10 11:55:26','2025-06-10 11:55:26');
 /*!40000 ALTER TABLE `private_messages` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -230,7 +236,7 @@ CREATE TABLE `subtasks` (
   UNIQUE KEY `uuid` (`uuid`),
   KEY `fk_subtasks_task_id_idx` (`task_id`),
   CONSTRAINT `fk_subtasks_task_id` FOREIGN KEY (`task_id`) REFERENCES `tasks` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -239,6 +245,7 @@ CREATE TABLE `subtasks` (
 
 LOCK TABLES `subtasks` WRITE;
 /*!40000 ALTER TABLE `subtasks` DISABLE KEYS */;
+INSERT INTO `subtasks` VALUES (1,'cc172640-45f1-11f0-af55-99dd8a19e019',1,'Leer teoría SQL',0,'2025-06-10 11:55:26','2025-06-10 11:55:26'),(2,'cc1728b6-45f1-11f0-af55-99dd8a19e019',1,'Practicar ejercicios',0,'2025-06-10 11:55:26','2025-06-10 11:55:26'),(3,'cc172992-45f1-11f0-af55-99dd8a19e019',3,'Leer documentación MDN',0,'2025-06-10 11:55:26','2025-06-10 11:55:26'),(4,'cc172a0a-45f1-11f0-af55-99dd8a19e019',4,'Leer parte 1',0,'2025-06-10 11:55:26','2025-06-10 11:55:26'),(5,'cc172a6e-45f1-11f0-af55-99dd8a19e019',4,'Leer parte 2',0,'2025-06-10 11:55:26','2025-06-10 11:55:26');
 /*!40000 ALTER TABLE `subtasks` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -272,7 +279,7 @@ CREATE TABLE `tasks` (
   KEY `fk_tasks_course_id_idx` (`course_id`),
   CONSTRAINT `fk_tasks_course_id` FOREIGN KEY (`course_id`) REFERENCES `courses` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
   CONSTRAINT `fk_tasks_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -281,6 +288,7 @@ CREATE TABLE `tasks` (
 
 LOCK TABLES `tasks` WRITE;
 /*!40000 ALTER TABLE `tasks` DISABLE KEYS */;
+INSERT INTO `tasks` VALUES (1,'cc16fac6-45f1-11f0-af55-99dd8a19e019',1,1,'course_related','Repasar SELECT','Estudiar SELECT y WHERE',NULL,NULL,NULL,0,0,'neutral',0,'2025-06-10 11:55:26','2025-06-10 11:55:26'),(2,'cc16ff12-45f1-11f0-af55-99dd8a19e019',1,NULL,'custom','Comprar café','Ir al súper',NULL,NULL,NULL,0,0,'neutral',0,'2025-06-10 11:55:26','2025-06-10 11:55:26'),(3,'cc17000c-45f1-11f0-af55-99dd8a19e019',3,2,'course_related','Estudiar funciones JS','Revisar funciones flecha',NULL,NULL,NULL,0,0,'neutral',0,'2025-06-10 11:55:26','2025-06-10 11:55:26'),(4,'cc1700b6-45f1-11f0-af55-99dd8a19e019',3,NULL,'custom','Leer blog de programación','Artículo de async/await',NULL,NULL,NULL,0,0,'neutral',0,'2025-06-10 11:55:26','2025-06-10 11:55:26'),(5,'cc17014c-45f1-11f0-af55-99dd8a19e019',4,NULL,'custom','Enviar email','Enviar recordatorio al equipo',NULL,NULL,NULL,0,0,'neutral',0,'2025-06-10 11:55:26','2025-06-10 11:55:26');
 /*!40000 ALTER TABLE `tasks` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -311,7 +319,7 @@ CREATE TABLE `users` (
   UNIQUE KEY `email_UNIQUE` (`email`),
   UNIQUE KEY `username_UNIQUE` (`username`),
   UNIQUE KEY `uuid` (`uuid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -320,6 +328,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (1,'cc162cc2-45f1-11f0-af55-99dd8a19e019','Ana','García','1995-08-12','ana@example.com','ana95','password123',NULL,1,0,NULL,'student','2025-06-10 11:55:26','2025-06-10 11:55:26'),(2,'cc163604-45f1-11f0-af55-99dd8a19e019','Luis','Martínez','1987-03-02','luis@example.com','luism','password123',NULL,1,0,NULL,'teacher','2025-06-10 11:55:26','2025-06-10 11:55:26'),(3,'cc16383e-45f1-11f0-af55-99dd8a19e019','Clara','López','1992-01-20','clara@example.com','claral','password123',NULL,1,0,NULL,'student','2025-06-10 11:55:26','2025-06-10 11:55:26'),(4,'cc163924-45f1-11f0-af55-99dd8a19e019','Pedro','Sánchez','1980-10-10','pedro@example.com','pedros','password123',NULL,1,0,NULL,'general','2025-06-10 11:55:26','2025-06-10 11:55:26'),(5,'cc1639f6-45f1-11f0-af55-99dd8a19e019','Laura','Ruiz','1990-11-05','laura@example.com','laurar','password123',NULL,1,0,NULL,'teacher','2025-06-10 11:55:26','2025-06-10 11:55:26');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -332,4 +341,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-06-09 12:43:42
+-- Dump completed on 2025-06-10 13:58:43
