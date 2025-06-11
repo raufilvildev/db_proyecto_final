@@ -319,7 +319,7 @@ CREATE TABLE `users` (
   UNIQUE KEY `email_UNIQUE` (`email`),
   UNIQUE KEY `username_UNIQUE` (`username`),
   UNIQUE KEY `uuid` (`uuid`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -328,7 +328,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'cc162cc2-45f1-11f0-af55-99dd8a19e019','Ana','García','1995-08-12','ana@example.com','ana95','password123',NULL,1,0,NULL,'student','2025-06-10 11:55:26','2025-06-10 11:55:26'),(2,'cc163604-45f1-11f0-af55-99dd8a19e019','Luis','Martínez','1987-03-02','luis@example.com','luism','password123',NULL,1,0,NULL,'teacher','2025-06-10 11:55:26','2025-06-10 11:55:26'),(3,'cc16383e-45f1-11f0-af55-99dd8a19e019','Clara','López','1992-01-20','clara@example.com','claral','password123',NULL,1,0,NULL,'student','2025-06-10 11:55:26','2025-06-10 11:55:26'),(4,'cc163924-45f1-11f0-af55-99dd8a19e019','Pedro','Sánchez','1980-10-10','pedro@example.com','pedros','password123',NULL,1,0,NULL,'general','2025-06-10 11:55:26','2025-06-10 11:55:26'),(5,'cc1639f6-45f1-11f0-af55-99dd8a19e019','Laura','Ruiz','1990-11-05','laura@example.com','laurar','password123',NULL,1,0,NULL,'teacher','2025-06-10 11:55:26','2025-06-10 11:55:26');
+INSERT INTO `users` VALUES (1,'cc162cc2-45f1-11f0-af55-99dd8a19e019','Ana','García','1995-08-12','ana@example.com','ana95','$2b$08$.Zx83tyt.mw03I77dRsyX.wglF02QTGXSxmvmd5VwYgunEgKtkf3e',NULL,1,1,NULL,'student','2025-06-10 11:55:26','2025-06-11 10:01:29'),(2,'cc163604-45f1-11f0-af55-99dd8a19e019','Luis','Martínez','1987-03-02','luis@example.com','luism','$2b$08$.Zx83tyt.mw03I77dRsyX.wglF02QTGXSxmvmd5VwYgunEgKtkf3e',NULL,1,1,NULL,'teacher','2025-06-10 11:55:26','2025-06-11 10:04:02'),(3,'cc16383e-45f1-11f0-af55-99dd8a19e019','Clara','López','1992-01-20','clara@example.com','claral','$2b$08$.Zx83tyt.mw03I77dRsyX.wglF02QTGXSxmvmd5VwYgunEgKtkf3e',NULL,1,1,NULL,'student','2025-06-10 11:55:26','2025-06-11 10:04:02'),(4,'cc163924-45f1-11f0-af55-99dd8a19e019','Pedro','Sánchez','1980-10-10','pedro@example.com','pedros','$2b$08$.Zx83tyt.mw03I77dRsyX.wglF02QTGXSxmvmd5VwYgunEgKtkf3e',NULL,1,1,NULL,'general','2025-06-10 11:55:26','2025-06-11 10:04:02'),(5,'cc1639f6-45f1-11f0-af55-99dd8a19e019','Laura','Ruiz','1990-11-05','laura@example.com','laurar','$2b$08$.Zx83tyt.mw03I77dRsyX.wglF02QTGXSxmvmd5VwYgunEgKtkf3e',NULL,1,1,NULL,'teacher','2025-06-10 11:55:26','2025-06-11 10:04:02');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -341,4 +341,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-06-10 13:58:43
+-- Dump completed on 2025-06-11 12:18:26
