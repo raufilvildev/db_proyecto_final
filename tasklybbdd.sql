@@ -36,7 +36,7 @@ CREATE TABLE `courses` (
   UNIQUE KEY `uuid` (`uuid`),
   KEY `fk_courses_teacher_id_idx` (`teacher_id`),
   CONSTRAINT `fk_courses_teacher_id` FOREIGN KEY (`teacher_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -45,9 +45,60 @@ CREATE TABLE `courses` (
 
 LOCK TABLES `courses` WRITE;
 /*!40000 ALTER TABLE `courses` DISABLE KEYS */;
-INSERT INTO `courses` VALUES (1,'cc167bb4-45f1-11f0-af55-99dd8a19e019',2,'Curso de SQL','Aprende SQL desde cero',NULL,NULL,'2025-06-10 11:55:26','2025-06-10 11:55:26'),(2,'cc167fc4-45f1-11f0-af55-99dd8a19e019',5,'Curso de JavaScript','JavaScript para principiantes',NULL,NULL,'2025-06-10 11:55:26','2025-06-10 11:55:26'),(3,'cc1680f0-45f1-11f0-af55-99dd8a19e019',2,'Curso de Git','Control de versiones con Git',NULL,NULL,'2025-06-10 11:55:26','2025-06-10 11:55:26'),(4,'cc16819a-45f1-11f0-af55-99dd8a19e019',5,'Curso de HTML','Introducción al desarrollo web',NULL,NULL,'2025-06-10 11:55:26','2025-06-10 11:55:26'),(5,'cc168230-45f1-11f0-af55-99dd8a19e019',2,'Curso de CSS','Estilos y diseño web',NULL,NULL,'2025-06-10 11:55:26','2025-06-10 11:55:26');
+INSERT INTO `courses` VALUES (1,'d1cf78b0-4c1f-11f0-bd0b-c24f467165a7',1,'Programación Avanzada en Python','Conceptos avanzados y buenas prácticas en Python.',NULL,'flat-mountains.svg','2025-06-18 08:39:59','2025-06-18 08:39:59'),(2,'d1cf7ec8-4c1f-11f0-bd0b-c24f467165a7',2,'Diseño de Bases de Datos Relacionales','Desde el modelo entidad-relación hasta la normalización.',NULL,'bermuda-triangle.svg','2025-06-18 08:39:59','2025-06-18 08:39:59'),(3,'d1cf8058-4c1f-11f0-bd0b-c24f467165a7',3,'Introducción a Docker y Kubernetes','Contenedores y orquestación para desarrolladores.',NULL,'scattered-forcefields.svg','2025-06-18 08:39:59','2025-06-18 08:39:59'),(4,'d1cf813e-4c1f-11f0-bd0b-c24f467165a7',1,'Machine Learning con Scikit-Learn','Aprende a crear modelos predictivos en Python.',NULL,'scattered-forcefields.svg','2025-06-18 08:39:59','2025-06-18 08:39:59'),(5,'d1cf821a-4c1f-11f0-bd0b-c24f467165a7',2,'Desarrollo Frontend con React.js','Crea interfaces de usuario interactivas y modernas.',NULL,'bermuda-triangle.svg','2025-06-18 08:39:59','2025-06-18 08:39:59'),(6,'d1cf82e2-4c1f-11f0-bd0b-c24f467165a7',3,'Ciberseguridad para Principiantes','Fundamentos de la seguridad informática.',NULL,'flat-mountains.svg','2025-06-18 08:39:59','2025-06-18 08:39:59'),(7,'d1cf83aa-4c1f-11f0-bd0b-c24f467165a7',1,'Testing de Software con Pytest','Asegura la calidad de tu código con tests automatizados.',NULL,'bermuda-triangle.svg','2025-06-18 08:39:59','2025-06-18 08:39:59'),(8,'d1cf847c-4c1f-11f0-bd0b-c24f467165a7',2,'Cloud Computing con AWS','Introducción a los servicios de Amazon Web Services.',NULL,'bermuda-diamond.svg','2025-06-18 08:39:59','2025-06-18 08:39:59'),(9,'d1cf854e-4c1f-11f0-bd0b-c24f467165a7',3,'Desarrollo de APIs REST con Node.js','Crea APIs robustas y escalables con Express.',NULL,'flat-mountains.svg','2025-06-18 08:39:59','2025-06-18 08:39:59'),(10,'d1cf8616-4c1f-11f0-bd0b-c24f467165a7',1,'Análisis de Datos con Pandas','Manipulación y análisis de datos de forma eficiente.',NULL,'scattered-forcefields.svg','2025-06-18 08:39:59','2025-06-18 08:39:59');
 /*!40000 ALTER TABLE `courses` ENABLE KEYS */;
 UNLOCK TABLES;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `set_random_course_image` BEFORE INSERT ON `courses` FOR EACH ROW BEGIN
+    -- Si la URL de la imagen del curso es NULL (o si se omite en el INSERT)
+    IF NEW.course_image_url IS NULL THEN
+        -- Asigna una de las cuatro imágenes de forma aleatoria
+        SET NEW.course_image_url = ELT(FLOOR(1 + RAND() * 4),
+            'bermuda-diamond.svg',
+            'bermuda-triangle.svg',
+            'flat-mountains.svg',
+            'scattered-forcefields.svg'
+        );
+    END IF;
+END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `set_random_course_image_before_insert` BEFORE INSERT ON `courses` FOR EACH ROW BEGIN
+    -- Lista de imágenes disponibles
+    -- Se selecciona una aleatoriamente usando RAND() y ELT()
+    SET NEW.course_image_url = ELT(
+        FLOOR(1 + RAND() * 4),
+        'bermuda-diamond.svg',
+        'bermuda-triangle.svg',
+        'flat-mountains.svg',
+        'scattered-forcefields.svg'
+    );
+END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
 -- Table structure for table `enrollments`
@@ -67,7 +118,7 @@ CREATE TABLE `enrollments` (
   KEY `fk_enrollments_course_id_idx` (`course_id`),
   CONSTRAINT `fk_enrollments_course_id` FOREIGN KEY (`course_id`) REFERENCES `courses` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_enrollments_student_id` FOREIGN KEY (`student_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -76,7 +127,7 @@ CREATE TABLE `enrollments` (
 
 LOCK TABLES `enrollments` WRITE;
 /*!40000 ALTER TABLE `enrollments` DISABLE KEYS */;
-INSERT INTO `enrollments` VALUES (1,1,1,'2025-06-10 11:55:26'),(2,1,2,'2025-06-10 11:55:26'),(3,3,1,'2025-06-10 11:55:26'),(4,3,4,'2025-06-10 11:55:26'),(5,4,5,'2025-06-10 11:55:26');
+INSERT INTO `enrollments` VALUES (1,4,1,'2025-06-18 08:39:59'),(2,5,2,'2025-06-18 08:39:59'),(3,6,3,'2025-06-18 08:39:59'),(4,7,4,'2025-06-18 08:39:59'),(5,8,5,'2025-06-18 08:39:59'),(6,9,6,'2025-06-18 08:39:59'),(7,10,7,'2025-06-18 08:39:59'),(8,4,8,'2025-06-18 08:39:59'),(9,5,9,'2025-06-18 08:39:59'),(10,6,10,'2025-06-18 08:39:59');
 /*!40000 ALTER TABLE `enrollments` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -101,7 +152,7 @@ CREATE TABLE `forum_posts` (
   KEY `fk_forum_posts_user_id_idx` (`user_id`),
   CONSTRAINT `fk_forum_posts_thread_id` FOREIGN KEY (`thread_id`) REFERENCES `forum_threads` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_forum_posts_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -110,7 +161,7 @@ CREATE TABLE `forum_posts` (
 
 LOCK TABLES `forum_posts` WRITE;
 /*!40000 ALTER TABLE `forum_posts` DISABLE KEYS */;
-INSERT INTO `forum_posts` VALUES (1,'cc179490-45f1-11f0-af55-99dd8a19e019',1,2,'Puedes usar AND y OR. Ej: WHERE x=1 AND y=2','2025-06-10 11:55:26','2025-06-10 11:55:26'),(2,'cc17968e-45f1-11f0-af55-99dd8a19e019',2,5,'La principal diferencia es el manejo del this','2025-06-10 11:55:26','2025-06-10 11:55:26'),(3,'cc179760-45f1-11f0-af55-99dd8a19e019',3,2,'Stash guarda cambios temporales','2025-06-10 11:55:26','2025-06-10 11:55:26'),(4,'cc1797e2-45f1-11f0-af55-99dd8a19e019',4,5,'<article> sirve para contenido independiente','2025-06-10 11:55:26','2025-06-10 11:55:26'),(5,'cc17985a-45f1-11f0-af55-99dd8a19e019',5,2,'Grid es mejor para layouts grandes','2025-06-10 11:55:26','2025-06-10 11:55:26'),(6,'c9d623bc-340d-4cfb-8864-a40b8a02a614',6,2,'muy bien','2025-06-16 14:44:38','2025-06-16 14:44:38'),(7,'f4b05a71-629b-4808-8a00-7faab467d68b',6,2,'muy bien','2025-06-16 14:53:47','2025-06-16 14:53:47');
+INSERT INTO `forum_posts` VALUES (1,'d1d06130-4c1f-11f0-bd0b-c24f467165a7',1,1,'¡Buena pregunta! Se puede usar una función que devuelva el decorador.','2025-06-18 08:39:59','2025-06-18 08:39:59'),(2,'d1d06310-4c1f-11f0-bd0b-c24f467165a7',2,2,'Exacto. La desnormalización es una técnica válida para optimizar lecturas.','2025-06-18 08:39:59','2025-06-18 08:39:59'),(3,'d1d063c4-4c1f-11f0-bd0b-c24f467165a7',3,3,'Ese error suele ser por el shebang del script que intentas ejecutar. Revisa tu Dockerfile.','2025-06-18 08:39:59','2025-06-18 08:39:59'),(4,'d1d06446-4c1f-11f0-bd0b-c24f467165a7',4,1,'Seaborn suele dar gráficos más estéticos con menos código para empezar.','2025-06-18 08:39:59','2025-06-18 08:39:59'),(5,'d1d064be-4c1f-11f0-bd0b-c24f467165a7',5,2,'Usa `useEffect` casi siempre. `useLayoutEffect` es para casos raros donde necesitas leer el DOM antes del renderizado.','2025-06-18 08:39:59','2025-06-18 08:39:59'),(6,'d1d06536-4c1f-11f0-bd0b-c24f467165a7',6,3,'Usa una librería como DOMPurify en el frontend antes de renderizar el HTML.','2025-06-18 08:39:59','2025-06-18 08:39:59'),(7,'d1d065a4-4c1f-11f0-bd0b-c24f467165a7',7,2,'Una VPC (Virtual Private Cloud) es tu propia red aislada dentro de la nube de AWS.','2025-06-18 08:39:59','2025-06-18 08:39:59'),(8,'d1d0661c-4c1f-11f0-bd0b-c24f467165a7',8,3,'Necesitas instalar y configurar el paquete `cors` en tu aplicación de Express.','2025-06-18 08:39:59','2025-06-18 08:39:59'),(9,'d1d0669e-4c1f-11f0-bd0b-c24f467165a7',9,1,'Usa `pd.merge(df1, df2, on=\"columna_comun\", how=\"left\")`.','2025-06-18 08:39:59','2025-06-18 08:39:59'),(10,'d1d0672a-4c1f-11f0-bd0b-c24f467165a7',10,3,'Sí, el orden es crucial. Se ejecutan secuencialmente.','2025-06-18 08:39:59','2025-06-18 08:39:59');
 /*!40000 ALTER TABLE `forum_posts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -136,7 +187,7 @@ CREATE TABLE `forum_threads` (
   KEY `fk_forum_threads_user_id_idx` (`user_id`),
   CONSTRAINT `fk_forum_threads_course_id` FOREIGN KEY (`course_id`) REFERENCES `courses` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_forum_threads_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -145,7 +196,7 @@ CREATE TABLE `forum_threads` (
 
 LOCK TABLES `forum_threads` WRITE;
 /*!40000 ALTER TABLE `forum_threads` DISABLE KEYS */;
-INSERT INTO `forum_threads` VALUES (1,'cc177672-45f1-11f0-af55-99dd8a19e019',1,1,'Pregunta sobre SELECT','¿Cómo uso WHERE con múltiples condiciones?','2025-06-10 11:55:26','2025-06-10 11:55:26'),(2,'cc177834-45f1-11f0-af55-99dd8a19e019',2,3,'Duda sobre funciones JS','¿Qué diferencia hay entre funciones normales y flecha?','2025-06-10 11:55:26','2025-06-10 11:55:26'),(3,'cc177906-45f1-11f0-af55-99dd8a19e019',3,1,'¿Qué es Git stash?','No entiendo cómo funciona stash','2025-06-10 11:55:26','2025-06-10 11:55:26'),(4,'cc177988-45f1-11f0-af55-99dd8a19e019',4,3,'HTML semantic tags','¿Para qué sirve <article>?','2025-06-10 11:55:26','2025-06-10 11:55:26'),(5,'cc177a00-45f1-11f0-af55-99dd8a19e019',5,1,'CSS Grid vs Flexbox','¿Cuándo usar cada uno?','2025-06-10 11:55:26','2025-06-10 11:55:26'),(6,'68a0915a-ed55-475f-ad35-21b04dcf696e',3,2,'hola','que tal estas','2025-06-13 14:38:36','2025-06-13 14:38:36');
+INSERT INTO `forum_threads` VALUES (1,'d1d03f70-4c1f-11f0-bd0b-c24f467165a7',1,4,'Duda con decoradores en Python','No entiendo cómo pasar argumentos a un decorador.','2025-06-18 08:39:59','2025-06-18 08:39:59'),(2,'d1d0413c-4c1f-11f0-bd0b-c24f467165a7',2,5,'¿Tercera Forma Normal (3NF) es siempre necesaria?','He leído que a veces se desnormaliza por rendimiento.','2025-06-18 08:39:59','2025-06-18 08:39:59'),(3,'d1d041fa-4c1f-11f0-bd0b-c24f467165a7',3,6,'Error al levantar un contenedor','Me sale un error \"standard_init_linux.go:211: exec user process caused\"','2025-06-18 08:39:59','2025-06-18 08:39:59'),(4,'d1d0429a-4c1f-11f0-bd0b-c24f467165a7',4,7,'Mejor forma de visualizar datos de un modelo','¿Matplotlib o Seaborn para un RandomForest?','2025-06-18 08:39:59','2025-06-18 08:39:59'),(5,'d1d0431c-4c1f-11f0-bd0b-c24f467165a7',5,8,'¿useEffect o useLayoutEffect?','¿Cuándo debería usar useLayoutEffect sobre useEffect?','2025-06-18 08:39:59','2025-06-18 08:39:59'),(6,'d1d0439e-4c1f-11f0-bd0b-c24f467165a7',6,9,'Duda sobre XSS Almacenado','¿Cómo se sanitiza la entrada del usuario correctamente?','2025-06-18 08:39:59','2025-06-18 08:39:59'),(7,'d1d04420-4c1f-11f0-bd0b-c24f467165a7',7,10,'¿Qué es una VPC en AWS?','No entiendo la diferencia con una red local.','2025-06-18 08:39:59','2025-06-18 08:39:59'),(8,'d1d04498-4c1f-11f0-bd0b-c24f467165a7',8,4,'Problema con CORS en mi API REST','Recibo un error de \"Access-Control-Allow-Origin\" desde el frontend.','2025-06-18 08:39:59','2025-06-18 08:39:59'),(9,'d1d0451a-4c1f-11f0-bd0b-c24f467165a7',9,5,'¿Cómo unir dos DataFrames en Pandas?','Quiero hacer algo similar a un LEFT JOIN de SQL.','2025-06-18 08:39:59','2025-06-18 08:39:59'),(10,'d1d0459c-4c1f-11f0-bd0b-c24f467165a7',10,6,'Duda sobre middlewares en Express','¿El orden de los middlewares importa?','2025-06-18 08:39:59','2025-06-18 08:39:59');
 /*!40000 ALTER TABLE `forum_threads` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -170,7 +221,7 @@ CREATE TABLE `pomodoro` (
   UNIQUE KEY `uuid` (`uuid`),
   KEY `fk_pomodoro_user_id_idx` (`user_id`),
   CONSTRAINT `fk_pomodoro_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -179,7 +230,7 @@ CREATE TABLE `pomodoro` (
 
 LOCK TABLES `pomodoro` WRITE;
 /*!40000 ALTER TABLE `pomodoro` DISABLE KEYS */;
-INSERT INTO `pomodoro` VALUES (1,'cc174ba2-45f1-11f0-af55-99dd8a19e019',1,25,'00:05:00',1,25,'2025-06-10 11:55:26','2025-06-10 11:55:26'),(2,'cc174d8c-45f1-11f0-af55-99dd8a19e019',3,50,'00:10:00',1,50,'2025-06-10 11:55:26','2025-06-10 11:55:26'),(3,'cc174e36-45f1-11f0-af55-99dd8a19e019',4,25,'00:05:00',0,0,'2025-06-10 11:55:26','2025-06-10 11:55:26'),(4,'cc174ea4-45f1-11f0-af55-99dd8a19e019',1,25,'00:05:00',1,25,'2025-06-10 11:55:26','2025-06-10 11:55:26'),(5,'cc174f12-45f1-11f0-af55-99dd8a19e019',3,25,'00:05:00',1,25,'2025-06-10 11:55:26','2025-06-10 11:55:26');
+INSERT INTO `pomodoro` VALUES (1,'d1d0baf4-4c1f-11f0-bd0b-c24f467165a7',4,25,'00:05:00',1,25,'2025-06-18 08:39:59','2025-06-18 08:39:59'),(2,'d1d0bd24-4c1f-11f0-bd0b-c24f467165a7',5,50,'00:10:00',1,50,'2025-06-18 08:39:59','2025-06-18 08:39:59'),(3,'d1d0bdec-4c1f-11f0-bd0b-c24f467165a7',6,25,'00:05:00',0,15,'2025-06-18 08:39:59','2025-06-18 08:39:59'),(4,'d1d0be5a-4c1f-11f0-bd0b-c24f467165a7',7,45,'00:08:00',1,45,'2025-06-18 08:39:59','2025-06-18 08:39:59'),(5,'d1d0bebe-4c1f-11f0-bd0b-c24f467165a7',8,25,'00:05:00',1,25,'2025-06-18 08:39:59','2025-06-18 08:39:59'),(6,'d1d0bf68-4c1f-11f0-bd0b-c24f467165a7',9,30,'00:05:00',1,30,'2025-06-18 08:39:59','2025-06-18 08:39:59'),(7,'d1d0bfcc-4c1f-11f0-bd0b-c24f467165a7',10,60,'00:15:00',0,40,'2025-06-18 08:39:59','2025-06-18 08:39:59'),(8,'d1d0c030-4c1f-11f0-bd0b-c24f467165a7',4,25,'00:05:00',1,25,'2025-06-18 08:39:59','2025-06-18 08:39:59'),(9,'d1d0c0da-4c1f-11f0-bd0b-c24f467165a7',5,25,'00:05:00',1,25,'2025-06-18 08:39:59','2025-06-18 08:39:59'),(10,'d1d0c13e-4c1f-11f0-bd0b-c24f467165a7',6,50,'00:10:00',1,50,'2025-06-18 08:39:59','2025-06-18 08:39:59');
 /*!40000 ALTER TABLE `pomodoro` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -204,7 +255,7 @@ CREATE TABLE `private_messages` (
   KEY `fk_private_messages_receiver_id_idx` (`receiver_id`),
   CONSTRAINT `fk_private_messages_receiver_id` FOREIGN KEY (`receiver_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_private_messages_sender_id` FOREIGN KEY (`sender_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -213,7 +264,7 @@ CREATE TABLE `private_messages` (
 
 LOCK TABLES `private_messages` WRITE;
 /*!40000 ALTER TABLE `private_messages` DISABLE KEYS */;
-INSERT INTO `private_messages` VALUES (1,'cc17b5e2-45f1-11f0-af55-99dd8a19e019',1,2,'Hola, tengo una duda del curso','2025-06-10 11:55:26','2025-06-10 11:55:26'),(2,'cc17b8bc-45f1-11f0-af55-99dd8a19e019',3,5,'¿Puedes revisar mi ejercicio?','2025-06-10 11:55:26','2025-06-10 11:55:26'),(3,'cc17b9b6-45f1-11f0-af55-99dd8a19e019',4,2,'Gracias por la clase','2025-06-10 11:55:26','2025-06-10 11:55:26'),(4,'cc17ba42-45f1-11f0-af55-99dd8a19e019',1,5,'¿Habrá clase el viernes?','2025-06-10 11:55:26','2025-06-10 11:55:26'),(5,'cc17bac4-45f1-11f0-af55-99dd8a19e019',3,2,'¿Podemos hacer una tutoría?','2025-06-10 11:55:26','2025-06-10 11:55:26');
+INSERT INTO `private_messages` VALUES (1,'d1d07fbc-4c1f-11f0-bd0b-c24f467165a7',4,1,'Hola profe, ¿podría revisar mi práctica cuando tenga un momento?','2025-06-18 08:39:59','2025-06-18 08:39:59'),(2,'d1d081b0-4c1f-11f0-bd0b-c24f467165a7',5,2,'¡Gracias por la clase de hoy! Me quedó mucho más claro el concepto de claves foráneas.','2025-06-18 08:39:59','2025-06-18 08:39:59'),(3,'d1d08278-4c1f-11f0-bd0b-c24f467165a7',6,3,'Tengo problemas para instalar Kubernetes en mi Mac, ¿alguna recomendación?','2025-06-18 08:39:59','2025-06-18 08:39:59'),(4,'d1d08304-4c1f-11f0-bd0b-c24f467165a7',7,4,'¿Quieres hacer el trabajo de Machine Learning en equipo?','2025-06-18 08:39:59','2025-06-18 08:39:59'),(5,'d1d08386-4c1f-11f0-bd0b-c24f467165a7',8,5,'Te paso un enlace a un buen tutorial de React que encontré.','2025-06-18 08:39:59','2025-06-18 08:39:59'),(6,'d1d083fe-4c1f-11f0-bd0b-c24f467165a7',9,6,'Cuidado con los laboratorios de ciberseguridad, no vayas a atacar la red de la universidad.','2025-06-18 08:39:59','2025-06-18 08:39:59'),(7,'d1d08480-4c1f-11f0-bd0b-c24f467165a7',10,7,'¿Lograste configurar la VPC? A mí me está costando.','2025-06-18 08:39:59','2025-06-18 08:39:59'),(8,'d1d08502-4c1f-11f0-bd0b-c24f467165a7',1,4,'Claro, Mariana. La revisaré esta tarde y te daré feedback.','2025-06-18 08:39:59','2025-06-18 08:39:59'),(9,'d1d08584-4c1f-11f0-bd0b-c24f467165a7',2,5,'De nada, Juan. Me alegro de que te sirviera.','2025-06-18 08:39:59','2025-06-18 08:39:59'),(10,'d1d08610-4c1f-11f0-bd0b-c24f467165a7',3,6,'Te recomiendo usar Docker Desktop, ya incluye una versión de Kubernetes fácil de activar.','2025-06-18 08:39:59','2025-06-18 08:39:59');
 /*!40000 ALTER TABLE `private_messages` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -236,7 +287,7 @@ CREATE TABLE `subtasks` (
   UNIQUE KEY `uuid` (`uuid`),
   KEY `fk_subtasks_task_id_idx` (`task_id`),
   CONSTRAINT `fk_subtasks_task_id` FOREIGN KEY (`task_id`) REFERENCES `tasks` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -245,7 +296,7 @@ CREATE TABLE `subtasks` (
 
 LOCK TABLES `subtasks` WRITE;
 /*!40000 ALTER TABLE `subtasks` DISABLE KEYS */;
-INSERT INTO `subtasks` VALUES (1,'cc172640-45f1-11f0-af55-99dd8a19e019',1,'Leer teoría SQL',0,'2025-06-10 11:55:26','2025-06-10 11:55:26'),(2,'cc1728b6-45f1-11f0-af55-99dd8a19e019',1,'Practicar ejercicios',0,'2025-06-10 11:55:26','2025-06-10 11:55:26'),(3,'cc172992-45f1-11f0-af55-99dd8a19e019',3,'Leer documentación MDN',0,'2025-06-10 11:55:26','2025-06-10 11:55:26'),(4,'cc172a0a-45f1-11f0-af55-99dd8a19e019',4,'Leer parte 1',0,'2025-06-10 11:55:26','2025-06-10 11:55:26'),(5,'cc172a6e-45f1-11f0-af55-99dd8a19e019',4,'Leer parte 2',0,'2025-06-10 11:55:26','2025-06-10 11:55:26');
+INSERT INTO `subtasks` VALUES (1,'d1d01b58-4c1f-11f0-bd0b-c24f467165a7',1,'Implementar función fibonacci con generador',0,'2025-06-18 08:39:59','2025-06-18 08:39:59'),(2,'d1d01d56-4c1f-11f0-bd0b-c24f467165a7',1,'Escribir tests para la función',0,'2025-06-18 08:39:59','2025-06-18 08:39:59'),(3,'d1d01e0a-4c1f-11f0-bd0b-c24f467165a7',2,'Identificar entidades y atributos',0,'2025-06-18 08:39:59','2025-06-18 08:39:59'),(4,'d1d01e82-4c1f-11f0-bd0b-c24f467165a7',2,'Definir relaciones y cardinalidad',0,'2025-06-18 08:39:59','2025-06-18 08:39:59'),(5,'d1d01ee6-4c1f-11f0-bd0b-c24f467165a7',3,'Ver videos sobre Docker Compose',0,'2025-06-18 08:39:59','2025-06-18 08:39:59'),(6,'d1d01f54-4c1f-11f0-bd0b-c24f467165a7',4,'Manejar valores nulos en la columna \"Age\"',0,'2025-06-18 08:39:59','2025-06-18 08:39:59'),(7,'d1d01fb8-4c1f-11f0-bd0b-c24f467165a7',5,'Crear formulario con email y password',0,'2025-06-18 08:39:59','2025-06-18 08:39:59'),(8,'d1d0201c-4c1f-11f0-bd0b-c24f467165a7',6,'Probar con ejemplos de OWASP',0,'2025-06-18 08:39:59','2025-06-18 08:39:59'),(9,'d1d02080-4c1f-11f0-bd0b-c24f467165a7',7,'Crear una instancia EC2 para las pruebas',0,'2025-06-18 08:39:59','2025-06-18 08:39:59'),(10,'d1d020e4-4c1f-11f0-bd0b-c24f467165a7',8,'Documentar las rutas con Postman',0,'2025-06-18 08:39:59','2025-06-18 08:39:59');
 /*!40000 ALTER TABLE `subtasks` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -279,7 +330,7 @@ CREATE TABLE `tasks` (
   KEY `fk_tasks_course_id_idx` (`course_id`),
   CONSTRAINT `fk_tasks_course_id` FOREIGN KEY (`course_id`) REFERENCES `courses` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
   CONSTRAINT `fk_tasks_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -288,7 +339,7 @@ CREATE TABLE `tasks` (
 
 LOCK TABLES `tasks` WRITE;
 /*!40000 ALTER TABLE `tasks` DISABLE KEYS */;
-INSERT INTO `tasks` VALUES (1,'cc16fac6-45f1-11f0-af55-99dd8a19e019',1,1,'course_related','Repasar SELECT','Estudiar SELECT y WHERE',NULL,NULL,NULL,0,0,'neutral',0,'2025-06-10 11:55:26','2025-06-10 11:55:26'),(2,'cc16ff12-45f1-11f0-af55-99dd8a19e019',1,NULL,'custom','Comprar café','Ir al súper',NULL,NULL,NULL,0,0,'neutral',0,'2025-06-10 11:55:26','2025-06-10 11:55:26'),(3,'cc17000c-45f1-11f0-af55-99dd8a19e019',3,2,'course_related','Estudiar funciones JS','Revisar funciones flecha',NULL,NULL,NULL,0,0,'neutral',0,'2025-06-10 11:55:26','2025-06-10 11:55:26'),(4,'cc1700b6-45f1-11f0-af55-99dd8a19e019',3,NULL,'custom','Leer blog de programación','Artículo de async/await',NULL,NULL,NULL,0,0,'neutral',0,'2025-06-10 11:55:26','2025-06-10 11:55:26'),(5,'cc17014c-45f1-11f0-af55-99dd8a19e019',4,NULL,'custom','Enviar email','Enviar recordatorio al equipo',NULL,NULL,NULL,0,0,'neutral',0,'2025-06-10 11:55:26','2025-06-10 11:55:26');
+INSERT INTO `tasks` VALUES (1,'d1cff254-4c1f-11f0-bd0b-c24f467165a7',4,1,'course_related','Entregar Práctica 1 de Python','Realizar los ejercicios sobre generadores.',NULL,NULL,NULL,1,1,'neutral',0,'2025-06-18 08:39:59','2025-06-18 08:39:59'),(2,'d1cff510-4c1f-11f0-bd0b-c24f467165a7',5,2,'course_related','Diseñar Diagrama E-R','Crear el diagrama para el proyecto final.',NULL,NULL,NULL,1,0,'neutral',0,'2025-06-18 08:39:59','2025-06-18 08:39:59'),(3,'d1cff632-4c1f-11f0-bd0b-c24f467165a7',6,NULL,'custom','Estudiar para examen de Docker','Repasar los volúmenes y redes.',NULL,NULL,NULL,0,1,'neutral',0,'2025-06-18 08:39:59','2025-06-18 08:39:59'),(4,'d1cff6d2-4c1f-11f0-bd0b-c24f467165a7',7,4,'course_related','Limpiar dataset de Titanic','Aplicar técnicas de preprocesamiento.',NULL,NULL,NULL,0,0,'neutral',0,'2025-06-18 08:39:59','2025-06-18 08:39:59'),(5,'d1cff768-4c1f-11f0-bd0b-c24f467165a7',8,5,'course_related','Crear componente de Login','Usar hooks de estado en React.',NULL,NULL,NULL,1,1,'neutral',0,'2025-06-18 08:39:59','2025-06-18 08:39:59'),(6,'d1cff7f4-4c1f-11f0-bd0b-c24f467165a7',9,6,'course_related','Investigar sobre inyección SQL','Entender los mecanismos de prevención.',NULL,NULL,NULL,1,0,'neutral',0,'2025-06-18 08:39:59','2025-06-18 08:39:59'),(7,'d1cff880-4c1f-11f0-bd0b-c24f467165a7',10,7,'course_related','Configurar un Security Group en AWS','Abrir puertos 80 y 443.',NULL,NULL,NULL,0,1,'neutral',0,'2025-06-18 08:39:59','2025-06-18 08:39:59'),(8,'d1cff902-4c1f-11f0-bd0b-c24f467165a7',4,8,'course_related','Definir endpoints para API de usuarios','Crear rutas GET, POST, PUT, DELETE.',NULL,NULL,NULL,1,1,'neutral',0,'2025-06-18 08:39:59','2025-06-18 08:39:59'),(9,'d1cff998-4c1f-11f0-bd0b-c24f467165a7',5,NULL,'custom','Leer documentación de Pandas','Capítulo sobre GroupBy.',NULL,NULL,NULL,0,0,'neutral',0,'2025-06-18 08:39:59','2025-06-18 08:39:59'),(10,'d1cffa24-4c1f-11f0-bd0b-c24f467165a7',6,10,'course_related','Ver tutorial de Express.js','Video sobre middlewares.',NULL,NULL,NULL,0,1,'neutral',0,'2025-06-18 08:39:59','2025-06-18 08:39:59');
 /*!40000 ALTER TABLE `tasks` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -319,7 +370,7 @@ CREATE TABLE `users` (
   UNIQUE KEY `email_UNIQUE` (`email`),
   UNIQUE KEY `username_UNIQUE` (`username`),
   UNIQUE KEY `uuid` (`uuid`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -328,9 +379,17 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'cc162cc2-45f1-11f0-af55-99dd8a19e019','Ana','García','1995-08-12','ana@example.com','ana95','$2b$08$.Zx83tyt.mw03I77dRsyX.wglF02QTGXSxmvmd5VwYgunEgKtkf3e',NULL,1,1,NULL,'student','2025-06-10 11:55:26','2025-06-11 10:01:29'),(2,'cc163604-45f1-11f0-af55-99dd8a19e019','Luis','Martínez','1987-03-02','luis@example.com','luism','$2b$08$.Zx83tyt.mw03I77dRsyX.wglF02QTGXSxmvmd5VwYgunEgKtkf3e',NULL,1,1,NULL,'teacher','2025-06-10 11:55:26','2025-06-11 10:04:02'),(3,'cc16383e-45f1-11f0-af55-99dd8a19e019','Clara','López','1992-01-20','clara@example.com','claral','$2b$08$.Zx83tyt.mw03I77dRsyX.wglF02QTGXSxmvmd5VwYgunEgKtkf3e',NULL,1,1,NULL,'student','2025-06-10 11:55:26','2025-06-11 10:04:02'),(4,'cc163924-45f1-11f0-af55-99dd8a19e019','Pedro','Sánchez','1980-10-10','pedro@example.com','pedros','$2b$08$.Zx83tyt.mw03I77dRsyX.wglF02QTGXSxmvmd5VwYgunEgKtkf3e',NULL,1,1,NULL,'general','2025-06-10 11:55:26','2025-06-11 10:04:02'),(5,'cc1639f6-45f1-11f0-af55-99dd8a19e019','Laura','Ruiz','1990-11-05','laura@example.com','laurar','$2b$08$.Zx83tyt.mw03I77dRsyX.wglF02QTGXSxmvmd5VwYgunEgKtkf3e',NULL,1,1,NULL,'teacher','2025-06-10 11:55:26','2025-06-11 10:04:02');
+INSERT INTO `users` VALUES (1,'d1ceef94-4c1f-11f0-bd0b-c24f467165a7','Carlos','Gómez','1985-05-15','carlos.gomez@example.com','carlosg','$2b$08$UVDlqAVSrVCx4Ioc4oxRzOuNadCyUO9GluQlYUZBO1OaCYG7dUBhW','default_user_profile.svg',1,1,NULL,'teacher','2025-06-18 08:39:59','2025-06-18 08:45:50'),(2,'d1cf185c-4c1f-11f0-bd0b-c24f467165a7','Sofía','Hernández','1991-09-23','sofia.hernandez@example.com','sofiah','$2b$08$UVDlqAVSrVCx4Ioc4oxRzOuNadCyUO9GluQlYUZBO1OaCYG7dUBhW','default_user_profile.svg',1,1,NULL,'teacher','2025-06-18 08:39:59','2025-06-18 08:45:50'),(3,'d1cf1b4a-4c1f-11f0-bd0b-c24f467165a7','Javier','Díaz','1988-12-01','javier.diaz@example.com','javierd','$2b$08$UVDlqAVSrVCx4Ioc4oxRzOuNadCyUO9GluQlYUZBO1OaCYG7dUBhW','default_user_profile.svg',1,1,NULL,'teacher','2025-06-18 08:39:59','2025-06-18 08:45:50'),(4,'d1cf1c3a-4c1f-11f0-bd0b-c24f467165a7','Mariana','Pérez','1998-07-30','mariana.perez@example.com','marianap','$2b$08$UVDlqAVSrVCx4Ioc4oxRzOuNadCyUO9GluQlYUZBO1OaCYG7dUBhW','default_user_profile.svg',1,1,NULL,'student','2025-06-18 08:39:59','2025-06-18 08:45:50'),(5,'d1cf1d2a-4c1f-11f0-bd0b-c24f467165a7','Juan','Ramírez','1999-02-18','juan.ramirez@example.com','juanr','$2b$08$UVDlqAVSrVCx4Ioc4oxRzOuNadCyUO9GluQlYUZBO1OaCYG7dUBhW','default_user_profile.svg',1,1,NULL,'student','2025-06-18 08:39:59','2025-06-18 08:45:50'),(6,'d1cf1de8-4c1f-11f0-bd0b-c24f467165a7','Valentina','Torres','2000-04-11','valentina.torres@example.com','valentinat','$2b$08$UVDlqAVSrVCx4Ioc4oxRzOuNadCyUO9GluQlYUZBO1OaCYG7dUBhW','default_user_profile.svg',1,1,NULL,'student','2025-06-18 08:39:59','2025-06-18 08:45:50'),(7,'d1cf1eec-4c1f-11f0-bd0b-c24f467165a7','Mateo','Flores','1997-11-03','mateo.flores@example.com','mateof','$2b$08$UVDlqAVSrVCx4Ioc4oxRzOuNadCyUO9GluQlYUZBO1OaCYG7dUBhW','default_user_profile.svg',1,1,NULL,'student','2025-06-18 08:39:59','2025-06-18 08:45:50'),(8,'d1cf1fb4-4c1f-11f0-bd0b-c24f467165a7','Camila','Acosta','2001-08-25','camila.acosta@example.com','camilaa','$2b$08$UVDlqAVSrVCx4Ioc4oxRzOuNadCyUO9GluQlYUZBO1OaCYG7dUBhW','default_user_profile.svg',1,1,NULL,'student','2025-06-18 08:39:59','2025-06-18 08:45:50'),(9,'d1cf2072-4c1f-11f0-bd0b-c24f467165a7','Daniel','Rojas','1999-06-07','daniel.rojas@example.com','danielr','$2b$08$UVDlqAVSrVCx4Ioc4oxRzOuNadCyUO9GluQlYUZBO1OaCYG7dUBhW','default_user_profile.svg',1,1,NULL,'student','2025-06-18 08:39:59','2025-06-18 08:45:50'),(10,'d1cf2126-4c1f-11f0-bd0b-c24f467165a7','Isabella','Morales','2002-03-14','isabella.morales@example.com','isabellam','$2b$08$UVDlqAVSrVCx4Ioc4oxRzOuNadCyUO9GluQlYUZBO1OaCYG7dUBhW','default_user_profile.svg',1,1,NULL,'student','2025-06-18 08:39:59','2025-06-18 08:45:50');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Dumping events for database 'taskly_db'
+--
+
+--
+-- Dumping routines for database 'taskly_db'
+--
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -341,4 +400,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-06-18  9:36:17
+-- Dump completed on 2025-06-18 10:46:39
