@@ -29,7 +29,7 @@ CREATE TABLE `courses` (
   `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `description` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `planning` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
-  `course_image_url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `course_image_url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT 'bermuda-diamond.svg',
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
@@ -101,7 +101,7 @@ CREATE TABLE `forum_posts` (
   KEY `fk_forum_posts_user_id_idx` (`user_id`),
   CONSTRAINT `fk_forum_posts_thread_id` FOREIGN KEY (`thread_id`) REFERENCES `forum_threads` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_forum_posts_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -110,7 +110,7 @@ CREATE TABLE `forum_posts` (
 
 LOCK TABLES `forum_posts` WRITE;
 /*!40000 ALTER TABLE `forum_posts` DISABLE KEYS */;
-INSERT INTO `forum_posts` VALUES (1,'cc179490-45f1-11f0-af55-99dd8a19e019',1,2,'Puedes usar AND y OR. Ej: WHERE x=1 AND y=2','2025-06-10 11:55:26','2025-06-10 11:55:26'),(2,'cc17968e-45f1-11f0-af55-99dd8a19e019',2,5,'La principal diferencia es el manejo del this','2025-06-10 11:55:26','2025-06-10 11:55:26'),(3,'cc179760-45f1-11f0-af55-99dd8a19e019',3,2,'Stash guarda cambios temporales','2025-06-10 11:55:26','2025-06-10 11:55:26'),(4,'cc1797e2-45f1-11f0-af55-99dd8a19e019',4,5,'<article> sirve para contenido independiente','2025-06-10 11:55:26','2025-06-10 11:55:26'),(5,'cc17985a-45f1-11f0-af55-99dd8a19e019',5,2,'Grid es mejor para layouts grandes','2025-06-10 11:55:26','2025-06-10 11:55:26');
+INSERT INTO `forum_posts` VALUES (1,'cc179490-45f1-11f0-af55-99dd8a19e019',1,2,'Puedes usar AND y OR. Ej: WHERE x=1 AND y=2','2025-06-10 11:55:26','2025-06-10 11:55:26'),(2,'cc17968e-45f1-11f0-af55-99dd8a19e019',2,5,'La principal diferencia es el manejo del this','2025-06-10 11:55:26','2025-06-10 11:55:26'),(3,'cc179760-45f1-11f0-af55-99dd8a19e019',3,2,'Stash guarda cambios temporales','2025-06-10 11:55:26','2025-06-10 11:55:26'),(4,'cc1797e2-45f1-11f0-af55-99dd8a19e019',4,5,'<article> sirve para contenido independiente','2025-06-10 11:55:26','2025-06-10 11:55:26'),(5,'cc17985a-45f1-11f0-af55-99dd8a19e019',5,2,'Grid es mejor para layouts grandes','2025-06-10 11:55:26','2025-06-10 11:55:26'),(6,'c9d623bc-340d-4cfb-8864-a40b8a02a614',6,2,'muy bien','2025-06-16 14:44:38','2025-06-16 14:44:38'),(7,'f4b05a71-629b-4808-8a00-7faab467d68b',6,2,'muy bien','2025-06-16 14:53:47','2025-06-16 14:53:47');
 /*!40000 ALTER TABLE `forum_posts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -136,7 +136,7 @@ CREATE TABLE `forum_threads` (
   KEY `fk_forum_threads_user_id_idx` (`user_id`),
   CONSTRAINT `fk_forum_threads_course_id` FOREIGN KEY (`course_id`) REFERENCES `courses` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_forum_threads_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -145,7 +145,7 @@ CREATE TABLE `forum_threads` (
 
 LOCK TABLES `forum_threads` WRITE;
 /*!40000 ALTER TABLE `forum_threads` DISABLE KEYS */;
-INSERT INTO `forum_threads` VALUES (1,'cc177672-45f1-11f0-af55-99dd8a19e019',1,1,'Pregunta sobre SELECT','¿Cómo uso WHERE con múltiples condiciones?','2025-06-10 11:55:26','2025-06-10 11:55:26'),(2,'cc177834-45f1-11f0-af55-99dd8a19e019',2,3,'Duda sobre funciones JS','¿Qué diferencia hay entre funciones normales y flecha?','2025-06-10 11:55:26','2025-06-10 11:55:26'),(3,'cc177906-45f1-11f0-af55-99dd8a19e019',3,1,'¿Qué es Git stash?','No entiendo cómo funciona stash','2025-06-10 11:55:26','2025-06-10 11:55:26'),(4,'cc177988-45f1-11f0-af55-99dd8a19e019',4,3,'HTML semantic tags','¿Para qué sirve <article>?','2025-06-10 11:55:26','2025-06-10 11:55:26'),(5,'cc177a00-45f1-11f0-af55-99dd8a19e019',5,1,'CSS Grid vs Flexbox','¿Cuándo usar cada uno?','2025-06-10 11:55:26','2025-06-10 11:55:26');
+INSERT INTO `forum_threads` VALUES (1,'cc177672-45f1-11f0-af55-99dd8a19e019',1,1,'Pregunta sobre SELECT','¿Cómo uso WHERE con múltiples condiciones?','2025-06-10 11:55:26','2025-06-10 11:55:26'),(2,'cc177834-45f1-11f0-af55-99dd8a19e019',2,3,'Duda sobre funciones JS','¿Qué diferencia hay entre funciones normales y flecha?','2025-06-10 11:55:26','2025-06-10 11:55:26'),(3,'cc177906-45f1-11f0-af55-99dd8a19e019',3,1,'¿Qué es Git stash?','No entiendo cómo funciona stash','2025-06-10 11:55:26','2025-06-10 11:55:26'),(4,'cc177988-45f1-11f0-af55-99dd8a19e019',4,3,'HTML semantic tags','¿Para qué sirve <article>?','2025-06-10 11:55:26','2025-06-10 11:55:26'),(5,'cc177a00-45f1-11f0-af55-99dd8a19e019',5,1,'CSS Grid vs Flexbox','¿Cuándo usar cada uno?','2025-06-10 11:55:26','2025-06-10 11:55:26'),(6,'68a0915a-ed55-475f-ad35-21b04dcf696e',3,2,'hola','que tal estas','2025-06-13 14:38:36','2025-06-13 14:38:36');
 /*!40000 ALTER TABLE `forum_threads` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -308,7 +308,7 @@ CREATE TABLE `users` (
   `email` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `username` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `profile_image_url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `profile_image_url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT 'default_user_profile.svg',
   `notify_by_email` tinyint unsigned NOT NULL DEFAULT '1',
   `email_confirmed` tinyint unsigned NOT NULL DEFAULT '0',
   `random_number` varchar(6) DEFAULT NULL,
@@ -341,4 +341,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-06-12 11:00:47
+-- Dump completed on 2025-06-18  9:36:17
