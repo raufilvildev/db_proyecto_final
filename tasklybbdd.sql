@@ -36,7 +36,7 @@ CREATE TABLE `courses` (
   UNIQUE KEY `uuid` (`uuid`),
   KEY `fk_courses_teacher_id_idx` (`teacher_id`),
   CONSTRAINT `fk_courses_teacher_id` FOREIGN KEY (`teacher_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -45,7 +45,7 @@ CREATE TABLE `courses` (
 
 LOCK TABLES `courses` WRITE;
 /*!40000 ALTER TABLE `courses` DISABLE KEYS */;
-INSERT INTO `courses` VALUES (1,'d1cf78b0-4c1f-11f0-bd0b-c24f467165a7',1,'Programación Avanzada en Python','Conceptos avanzados y buenas prácticas en Python.',NULL,'flat-mountains.svg','2025-06-18 08:39:59','2025-06-18 08:39:59'),(2,'d1cf7ec8-4c1f-11f0-bd0b-c24f467165a7',2,'Diseño de Bases de Datos Relacionales','Desde el modelo entidad-relación hasta la normalización.',NULL,'bermuda-triangle.svg','2025-06-18 08:39:59','2025-06-18 08:39:59'),(3,'d1cf8058-4c1f-11f0-bd0b-c24f467165a7',3,'Introducción a Docker y Kubernetes','Contenedores y orquestación para desarrolladores.',NULL,'scattered-forcefields.svg','2025-06-18 08:39:59','2025-06-18 08:39:59'),(4,'d1cf813e-4c1f-11f0-bd0b-c24f467165a7',1,'Machine Learning con Scikit-Learn','Aprende a crear modelos predictivos en Python.',NULL,'scattered-forcefields.svg','2025-06-18 08:39:59','2025-06-18 08:39:59'),(5,'d1cf821a-4c1f-11f0-bd0b-c24f467165a7',2,'Desarrollo Frontend con React.js','Crea interfaces de usuario interactivas y modernas.',NULL,'bermuda-triangle.svg','2025-06-18 08:39:59','2025-06-18 08:39:59'),(6,'d1cf82e2-4c1f-11f0-bd0b-c24f467165a7',3,'Ciberseguridad para Principiantes','Fundamentos de la seguridad informática.',NULL,'flat-mountains.svg','2025-06-18 08:39:59','2025-06-18 08:39:59'),(7,'d1cf83aa-4c1f-11f0-bd0b-c24f467165a7',1,'Testing de Software con Pytest','Asegura la calidad de tu código con tests automatizados.',NULL,'bermuda-triangle.svg','2025-06-18 08:39:59','2025-06-18 08:39:59'),(8,'d1cf847c-4c1f-11f0-bd0b-c24f467165a7',2,'Cloud Computing con AWS','Introducción a los servicios de Amazon Web Services.',NULL,'bermuda-diamond.svg','2025-06-18 08:39:59','2025-06-18 08:39:59'),(9,'d1cf854e-4c1f-11f0-bd0b-c24f467165a7',3,'Desarrollo de APIs REST con Node.js','Crea APIs robustas y escalables con Express.',NULL,'flat-mountains.svg','2025-06-18 08:39:59','2025-06-18 08:39:59'),(10,'d1cf8616-4c1f-11f0-bd0b-c24f467165a7',1,'Análisis de Datos con Pandas','Manipulación y análisis de datos de forma eficiente.',NULL,'scattered-forcefields.svg','2025-06-18 08:39:59','2025-06-18 08:39:59');
+INSERT INTO `courses` VALUES (1,'d1cf78b0-4c1f-11f0-bd0b-c24f467165a7',1,'Programación Avanzada en Python','Conceptos avanzados y buenas prácticas en Python.',NULL,'flat-mountains.svg','2025-06-18 08:39:59','2025-06-18 08:39:59'),(2,'d1cf7ec8-4c1f-11f0-bd0b-c24f467165a7',2,'Diseño de Bases de Datos Relacionales','Desde el modelo entidad-relación hasta la normalización.',NULL,'bermuda-triangle.svg','2025-06-18 08:39:59','2025-06-18 08:39:59'),(3,'d1cf8058-4c1f-11f0-bd0b-c24f467165a7',3,'Introducción a Docker y Kubernetes','Contenedores y orquestación para desarrolladores.',NULL,'scattered-forcefields.svg','2025-06-18 08:39:59','2025-06-18 08:39:59'),(4,'d1cf813e-4c1f-11f0-bd0b-c24f467165a7',1,'Machine Learning con Scikit-Learn','Aprende a crear modelos predictivos en Python.',NULL,'scattered-forcefields.svg','2025-06-18 08:39:59','2025-06-18 08:39:59'),(5,'d1cf821a-4c1f-11f0-bd0b-c24f467165a7',2,'Desarrollo Frontend con React.js','Crea interfaces de usuario interactivas y modernas.',NULL,'bermuda-triangle.svg','2025-06-18 08:39:59','2025-06-18 08:39:59'),(6,'d1cf82e2-4c1f-11f0-bd0b-c24f467165a7',3,'Ciberseguridad para Principiantes','Fundamentos de la seguridad informática.',NULL,'flat-mountains.svg','2025-06-18 08:39:59','2025-06-18 08:39:59'),(7,'d1cf83aa-4c1f-11f0-bd0b-c24f467165a7',1,'Testing de Software con Pytest','Asegura la calidad de tu código con tests automatizados.',NULL,'bermuda-triangle.svg','2025-06-18 08:39:59','2025-06-18 08:39:59'),(8,'d1cf847c-4c1f-11f0-bd0b-c24f467165a7',2,'Cloud Computing con AWS','Introducción a los servicios de Amazon Web Services.',NULL,'bermuda-diamond.svg','2025-06-18 08:39:59','2025-06-18 08:39:59'),(9,'d1cf854e-4c1f-11f0-bd0b-c24f467165a7',3,'Desarrollo de APIs REST con Node.js','Crea APIs robustas y escalables con Express.',NULL,'flat-mountains.svg','2025-06-18 08:39:59','2025-06-18 08:39:59'),(10,'d1cf8616-4c1f-11f0-bd0b-c24f467165a7',1,'Análisis de Datos con Pandas','Manipulación y análisis de datos de forma eficiente.',NULL,'scattered-forcefields.svg','2025-06-18 08:39:59','2025-06-18 08:39:59'),(11,'6895f317-a5e1-4cd5-90de-f3a2d7e7317d',1,'nfdsjf','faksdjflsakfdjlk','[]','scattered-forcefields.svg','2025-06-23 10:44:02','2025-06-23 10:44:02'),(12,'d7ab76cf-e10c-464c-9993-0a250470da19',1,'EFDSFSA','FDSAFSAF','[]','e6eb86d6ebd98f9eed25c4607d62c937.png','2025-06-23 10:59:35','2025-06-23 10:59:35'),(13,'748dbc8e-0fe2-4acd-b395-f616384e368d',1,'FBVXBVC','BVXCVBXCVB','[]','flat-mountains.svg','2025-06-23 10:59:53','2025-06-23 10:59:53');
 /*!40000 ALTER TABLE `courses` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -68,31 +68,6 @@ DELIMITER ;;
             'scattered-forcefields.svg'
         );
     END IF;
-END */;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb4 */ ;
-/*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `set_random_course_image_before_insert` BEFORE INSERT ON `courses` FOR EACH ROW BEGIN
-    -- Lista de imágenes disponibles
-    -- Se selecciona una aleatoriamente usando RAND() y ELT()
-    SET NEW.course_image_url = ELT(
-        FLOOR(1 + RAND() * 4),
-        'bermuda-diamond.svg',
-        'bermuda-triangle.svg',
-        'flat-mountains.svg',
-        'scattered-forcefields.svg'
-    );
 END */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -152,7 +127,7 @@ CREATE TABLE `forum_posts` (
   KEY `fk_forum_posts_user_id_idx` (`user_id`),
   CONSTRAINT `fk_forum_posts_thread_id` FOREIGN KEY (`thread_id`) REFERENCES `forum_threads` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_forum_posts_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -161,7 +136,7 @@ CREATE TABLE `forum_posts` (
 
 LOCK TABLES `forum_posts` WRITE;
 /*!40000 ALTER TABLE `forum_posts` DISABLE KEYS */;
-INSERT INTO `forum_posts` VALUES (1,'d1d06130-4c1f-11f0-bd0b-c24f467165a7',1,1,'¡Buena pregunta! Se puede usar una función que devuelva el decorador.','2025-06-18 08:39:59','2025-06-18 08:39:59'),(2,'d1d06310-4c1f-11f0-bd0b-c24f467165a7',2,2,'Exacto. La desnormalización es una técnica válida para optimizar lecturas.','2025-06-18 08:39:59','2025-06-18 08:39:59'),(3,'d1d063c4-4c1f-11f0-bd0b-c24f467165a7',3,3,'Ese error suele ser por el shebang del script que intentas ejecutar. Revisa tu Dockerfile.','2025-06-18 08:39:59','2025-06-18 08:39:59'),(4,'d1d06446-4c1f-11f0-bd0b-c24f467165a7',4,1,'Seaborn suele dar gráficos más estéticos con menos código para empezar.','2025-06-18 08:39:59','2025-06-18 08:39:59'),(5,'d1d064be-4c1f-11f0-bd0b-c24f467165a7',5,2,'Usa `useEffect` casi siempre. `useLayoutEffect` es para casos raros donde necesitas leer el DOM antes del renderizado.','2025-06-18 08:39:59','2025-06-18 08:39:59'),(6,'d1d06536-4c1f-11f0-bd0b-c24f467165a7',6,3,'Usa una librería como DOMPurify en el frontend antes de renderizar el HTML.','2025-06-18 08:39:59','2025-06-18 08:39:59'),(7,'d1d065a4-4c1f-11f0-bd0b-c24f467165a7',7,2,'Una VPC (Virtual Private Cloud) es tu propia red aislada dentro de la nube de AWS.','2025-06-18 08:39:59','2025-06-18 08:39:59'),(8,'d1d0661c-4c1f-11f0-bd0b-c24f467165a7',8,3,'Necesitas instalar y configurar el paquete `cors` en tu aplicación de Express.','2025-06-18 08:39:59','2025-06-18 08:39:59'),(9,'d1d0669e-4c1f-11f0-bd0b-c24f467165a7',9,1,'Usa `pd.merge(df1, df2, on=\"columna_comun\", how=\"left\")`.','2025-06-18 08:39:59','2025-06-18 08:39:59'),(10,'d1d0672a-4c1f-11f0-bd0b-c24f467165a7',10,3,'Sí, el orden es crucial. Se ejecutan secuencialmente.','2025-06-18 08:39:59','2025-06-18 08:39:59');
+INSERT INTO `forum_posts` VALUES (1,'d1d06130-4c1f-11f0-bd0b-c24f467165a7',1,1,'No pasa nada vale','2025-06-18 08:39:59','2025-06-20 06:22:35'),(2,'d1d06310-4c1f-11f0-bd0b-c24f467165a7',2,2,'Exacto. La desnormalización es una técnica válida para optimizar lecturas.','2025-06-18 08:39:59','2025-06-18 08:39:59'),(3,'d1d063c4-4c1f-11f0-bd0b-c24f467165a7',3,3,'Ese error suele ser por el shebang del script que intentas ejecutar. Revisa tu Dockerfile.','2025-06-18 08:39:59','2025-06-18 08:39:59'),(4,'d1d06446-4c1f-11f0-bd0b-c24f467165a7',4,1,'No pasa nada vale','2025-06-18 08:39:59','2025-06-20 06:22:35'),(5,'d1d064be-4c1f-11f0-bd0b-c24f467165a7',5,2,'Usa `useEffect` casi siempre. `useLayoutEffect` es para casos raros donde necesitas leer el DOM antes del renderizado.','2025-06-18 08:39:59','2025-06-18 08:39:59'),(6,'d1d06536-4c1f-11f0-bd0b-c24f467165a7',6,3,'Usa una librería como DOMPurify en el frontend antes de renderizar el HTML.','2025-06-18 08:39:59','2025-06-18 08:39:59'),(7,'d1d065a4-4c1f-11f0-bd0b-c24f467165a7',7,2,'Una VPC (Virtual Private Cloud) es tu propia red aislada dentro de la nube de AWS.','2025-06-18 08:39:59','2025-06-18 08:39:59'),(8,'d1d0661c-4c1f-11f0-bd0b-c24f467165a7',8,3,'Necesitas instalar y configurar el paquete `cors` en tu aplicación de Express.','2025-06-18 08:39:59','2025-06-18 08:39:59'),(9,'d1d0669e-4c1f-11f0-bd0b-c24f467165a7',9,1,'No pasa nada vale','2025-06-18 08:39:59','2025-06-20 06:22:35'),(10,'d1d0672a-4c1f-11f0-bd0b-c24f467165a7',10,3,'Sí, el orden es crucial. Se ejecutan secuencialmente.','2025-06-18 08:39:59','2025-06-18 08:39:59');
 /*!40000 ALTER TABLE `forum_posts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -187,7 +162,7 @@ CREATE TABLE `forum_threads` (
   KEY `fk_forum_threads_user_id_idx` (`user_id`),
   CONSTRAINT `fk_forum_threads_course_id` FOREIGN KEY (`course_id`) REFERENCES `courses` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_forum_threads_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -400,4 +375,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-06-18 13:00:49
+-- Dump completed on 2025-06-23 13:02:03
