@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.42, for macos15 (arm64)
+-- MySQL dump 10.13  Distrib 8.0.42, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: taskly_db
+-- Host: 127.0.0.1    Database: taskly
 -- ------------------------------------------------------
--- Server version	8.4.5
+-- Server version	8.0.42
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -314,7 +314,6 @@ CREATE TABLE `tasks` (
   `time_end` time DEFAULT NULL,
   `is_urgent` tinyint unsigned NOT NULL DEFAULT '0' COMMENT 'Para Matriz Eisenhower: 1 = Urgente, 0 = No Urgente',
   `is_important` tinyint unsigned NOT NULL DEFAULT '0' COMMENT 'Para Matriz Eisenhower: 1 = Importante, 0 = No Importante',
-  `priority_color` enum('neutral','yellow','red') NOT NULL DEFAULT 'neutral',
   `is_completed` tinyint NOT NULL DEFAULT '0',
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -324,7 +323,7 @@ CREATE TABLE `tasks` (
   KEY `fk_tasks_course_id_idx` (`course_id`),
   CONSTRAINT `fk_tasks_course_id` FOREIGN KEY (`course_id`) REFERENCES `courses` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
   CONSTRAINT `fk_tasks_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -333,7 +332,7 @@ CREATE TABLE `tasks` (
 
 LOCK TABLES `tasks` WRITE;
 /*!40000 ALTER TABLE `tasks` DISABLE KEYS */;
-INSERT INTO `tasks` VALUES (1,'d1cff254-4c1f-11f0-bd0b-c24f467165a7',4,1,'course_related','Entregar Práctica 1 de Python','Realizar los ejercicios sobre generadores.',NULL,NULL,NULL,1,1,'neutral',0,'2025-06-18 08:39:59','2025-06-18 08:39:59'),(2,'d1cff510-4c1f-11f0-bd0b-c24f467165a7',5,2,'course_related','Diseñar Diagrama E-R','Crear el diagrama para el proyecto final.',NULL,NULL,NULL,1,0,'neutral',0,'2025-06-18 08:39:59','2025-06-18 08:39:59'),(3,'d1cff632-4c1f-11f0-bd0b-c24f467165a7',6,NULL,'custom','Estudiar para examen de Docker','Repasar los volúmenes y redes.',NULL,NULL,NULL,0,1,'neutral',0,'2025-06-18 08:39:59','2025-06-18 08:39:59'),(4,'d1cff6d2-4c1f-11f0-bd0b-c24f467165a7',7,4,'course_related','Limpiar dataset de Titanic','Aplicar técnicas de preprocesamiento.',NULL,NULL,NULL,0,0,'neutral',0,'2025-06-18 08:39:59','2025-06-18 08:39:59'),(5,'d1cff768-4c1f-11f0-bd0b-c24f467165a7',8,5,'course_related','Crear componente de Login','Usar hooks de estado en React.',NULL,NULL,NULL,1,1,'neutral',0,'2025-06-18 08:39:59','2025-06-18 08:39:59'),(6,'d1cff7f4-4c1f-11f0-bd0b-c24f467165a7',9,6,'course_related','Investigar sobre inyección SQL','Entender los mecanismos de prevención.',NULL,NULL,NULL,1,0,'neutral',0,'2025-06-18 08:39:59','2025-06-18 08:39:59'),(7,'d1cff880-4c1f-11f0-bd0b-c24f467165a7',10,7,'course_related','Configurar un Security Group en AWS','Abrir puertos 80 y 443.',NULL,NULL,NULL,0,1,'neutral',0,'2025-06-18 08:39:59','2025-06-18 08:39:59'),(8,'d1cff902-4c1f-11f0-bd0b-c24f467165a7',4,8,'course_related','Definir endpoints para API de usuarios','Crear rutas GET, POST, PUT, DELETE.',NULL,NULL,NULL,1,1,'neutral',0,'2025-06-18 08:39:59','2025-06-18 08:39:59'),(9,'d1cff998-4c1f-11f0-bd0b-c24f467165a7',5,NULL,'custom','Leer documentación de Pandas','Capítulo sobre GroupBy.',NULL,NULL,NULL,0,0,'neutral',0,'2025-06-18 08:39:59','2025-06-18 08:39:59'),(10,'d1cffa24-4c1f-11f0-bd0b-c24f467165a7',6,10,'course_related','Ver tutorial de Express.js','Video sobre middlewares.',NULL,NULL,NULL,0,1,'neutral',0,'2025-06-18 08:39:59','2025-06-18 08:39:59');
+INSERT INTO `tasks` VALUES (1,'d1cff254-4c1f-11f0-bd0b-c24f467165a7',4,1,'course_related','Entregar Práctica 1 de Python','Realizar los ejercicios sobre generadores.',NULL,NULL,NULL,1,1,0,'2025-06-18 08:39:59','2025-06-18 08:39:59'),(2,'d1cff510-4c1f-11f0-bd0b-c24f467165a7',5,2,'course_related','Diseñar Diagrama E-R','Crear el diagrama para el proyecto final.',NULL,NULL,NULL,1,0,0,'2025-06-18 08:39:59','2025-06-18 08:39:59'),(3,'d1cff632-4c1f-11f0-bd0b-c24f467165a7',6,NULL,'custom','Estudiar para examen de Docker','Repasar los volúmenes y redes.',NULL,NULL,NULL,0,1,0,'2025-06-18 08:39:59','2025-06-18 08:39:59'),(4,'d1cff6d2-4c1f-11f0-bd0b-c24f467165a7',7,4,'course_related','Limpiar dataset de Titanic','Aplicar técnicas de preprocesamiento.',NULL,NULL,NULL,0,0,0,'2025-06-18 08:39:59','2025-06-18 08:39:59'),(5,'d1cff768-4c1f-11f0-bd0b-c24f467165a7',8,5,'course_related','Crear componente de Login','Usar hooks de estado en React.',NULL,NULL,NULL,1,1,0,'2025-06-18 08:39:59','2025-06-18 08:39:59'),(6,'d1cff7f4-4c1f-11f0-bd0b-c24f467165a7',9,6,'course_related','Investigar sobre inyección SQL','Entender los mecanismos de prevención.',NULL,NULL,NULL,1,0,0,'2025-06-18 08:39:59','2025-06-18 08:39:59'),(7,'d1cff880-4c1f-11f0-bd0b-c24f467165a7',10,7,'course_related','Configurar un Security Group en AWS','Abrir puertos 80 y 443.',NULL,NULL,NULL,0,1,0,'2025-06-18 08:39:59','2025-06-18 08:39:59'),(8,'d1cff902-4c1f-11f0-bd0b-c24f467165a7',4,8,'course_related','Definir endpoints para API de usuarios','Crear rutas GET, POST, PUT, DELETE.',NULL,NULL,NULL,1,1,0,'2025-06-18 08:39:59','2025-06-18 08:39:59'),(9,'d1cff998-4c1f-11f0-bd0b-c24f467165a7',5,NULL,'custom','Leer documentación de Pandas','Capítulo sobre GroupBy.',NULL,NULL,NULL,0,0,0,'2025-06-18 08:39:59','2025-06-18 08:39:59'),(10,'d1cffa24-4c1f-11f0-bd0b-c24f467165a7',6,10,'course_related','Ver tutorial de Express.js','Video sobre middlewares.',NULL,NULL,NULL,0,1,0,'2025-06-18 08:39:59','2025-06-18 08:39:59'),(11,'98b001a1-5411-11f0-ac02-98bd807cdc3c',4,1,'course_related','Resolver ejercicios de comprensión en Python','Ejercicios sobre listas y tuplas.','2025-06-26 14:00:00',NULL,NULL,0,1,0,'2025-06-28 11:18:20','2025-06-28 11:18:20'),(12,'98b030d8-5411-11f0-ac02-98bd807cdc3c',4,1,'course_related','Practicar manejo de errores','Hacer ejercicios sobre try/except.','2025-06-27 16:00:00',NULL,NULL,1,1,0,'2025-06-28 11:18:20','2025-06-28 11:18:20'),(13,'98b10ab4-5411-11f0-ac02-98bd807cdc3c',4,1,'course_related','Entregar mini proyecto sobre funciones','Subir a la plataforma.','2025-06-28 10:00:00',NULL,NULL,1,1,1,'2025-06-28 11:18:20','2025-06-28 11:18:20'),(14,'98b118e0-5411-11f0-ac02-98bd807cdc3c',4,1,'course_related','Revisar feedback de ejercicios','Leer comentarios del profesor.','2025-06-28 15:00:00',NULL,NULL,0,1,0,'2025-06-28 11:18:20','2025-06-28 11:18:20'),(15,'98b11a0a-5411-11f0-ac02-98bd807cdc3c',4,1,'course_related','Participar en foro de discusión','Responder al menos a un compañero.','2025-06-28 18:00:00',NULL,NULL,0,0,0,'2025-06-28 11:18:20','2025-06-28 11:18:20'),(16,'98b1f9c8-5411-11f0-ac02-98bd807cdc3c',4,1,'course_related','Leer capítulo sobre funciones lambda','Capítulo 4 del libro.','2025-06-10 12:00:00',NULL,NULL,0,1,0,'2025-06-28 11:18:20','2025-06-28 11:18:20'),(17,'98b1fff2-5411-11f0-ac02-98bd807cdc3c',4,1,'course_related','Practicar con listas por comprensión','Ejercicios del campus virtual.','2025-06-20 11:00:00',NULL,NULL,1,0,0,'2025-06-28 11:18:20','2025-06-28 11:18:20');
 /*!40000 ALTER TABLE `tasks` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -378,11 +377,11 @@ INSERT INTO `users` VALUES (1,'d1ceef94-4c1f-11f0-bd0b-c24f467165a7','Carlos','G
 UNLOCK TABLES;
 
 --
--- Dumping events for database 'taskly_db'
+-- Dumping events for database 'taskly'
 --
 
 --
--- Dumping routines for database 'taskly_db'
+-- Dumping routines for database 'taskly'
 --
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -394,4 +393,6 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
+
 -- Dump completed on 2025-07-03 19:18:12
+
