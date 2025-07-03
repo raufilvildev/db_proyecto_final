@@ -45,7 +45,7 @@ CREATE TABLE `courses` (
 
 LOCK TABLES `courses` WRITE;
 /*!40000 ALTER TABLE `courses` DISABLE KEYS */;
-INSERT INTO `courses` VALUES (1,'d1cf78b0-4c1f-11f0-bd0b-c24f467165a7',1,'Programación Avanzada en Python','Conceptos avanzados y buenas prácticas en Python.',NULL,'flat-mountains.svg','2025-06-18 08:39:59','2025-06-18 08:39:59'),(2,'d1cf7ec8-4c1f-11f0-bd0b-c24f467165a7',2,'Diseño de Bases de Datos Relacionales','Desde el modelo entidad-relación hasta la normalización.',NULL,'bermuda-triangle.svg','2025-06-18 08:39:59','2025-06-18 08:39:59'),(3,'d1cf8058-4c1f-11f0-bd0b-c24f467165a7',3,'Introducción a Docker y Kubernetes','Contenedores y orquestación para desarrolladores.',NULL,'scattered-forcefields.svg','2025-06-18 08:39:59','2025-06-18 08:39:59'),(4,'d1cf813e-4c1f-11f0-bd0b-c24f467165a7',1,'Machine Learning con Scikit-Learn','Aprende a crear modelos predictivos en Python.',NULL,'scattered-forcefields.svg','2025-06-18 08:39:59','2025-06-18 08:39:59'),(5,'d1cf821a-4c1f-11f0-bd0b-c24f467165a7',2,'Desarrollo Frontend con React.js','Crea interfaces de usuario interactivas y modernas.',NULL,'bermuda-triangle.svg','2025-06-18 08:39:59','2025-06-18 08:39:59'),(6,'d1cf82e2-4c1f-11f0-bd0b-c24f467165a7',3,'Ciberseguridad para Principiantes','Fundamentos de la seguridad informática.',NULL,'flat-mountains.svg','2025-06-18 08:39:59','2025-06-18 08:39:59'),(7,'d1cf83aa-4c1f-11f0-bd0b-c24f467165a7',1,'Testing de Software con Pytest','Asegura la calidad de tu código con tests automatizados.',NULL,'bermuda-triangle.svg','2025-06-18 08:39:59','2025-06-18 08:39:59'),(8,'d1cf847c-4c1f-11f0-bd0b-c24f467165a7',2,'Cloud Computing con AWS','Introducción a los servicios de Amazon Web Services.',NULL,'bermuda-diamond.svg','2025-06-18 08:39:59','2025-06-18 08:39:59'),(9,'d1cf854e-4c1f-11f0-bd0b-c24f467165a7',3,'Desarrollo de APIs REST con Node.js','Crea APIs robustas y escalables con Express.',NULL,'flat-mountains.svg','2025-06-18 08:39:59','2025-06-18 08:39:59'),(10,'d1cf8616-4c1f-11f0-bd0b-c24f467165a7',1,'Análisis de Datos con Pandas','Manipulación y análisis de datos de forma eficiente.',NULL,'scattered-forcefields.svg','2025-06-18 08:39:59','2025-06-18 08:39:59'),(11,'6895f317-a5e1-4cd5-90de-f3a2d7e7317d',1,'nfdsjf','faksdjflsakfdjlk','[]','scattered-forcefields.svg','2025-06-23 10:44:02','2025-06-23 10:44:02'),(12,'d7ab76cf-e10c-464c-9993-0a250470da19',1,'EFDSFSA','FDSAFSAF','[]','e6eb86d6ebd98f9eed25c4607d62c937.png','2025-06-23 10:59:35','2025-06-23 10:59:35'),(13,'748dbc8e-0fe2-4acd-b395-f616384e368d',1,'FBVXBVC','BVXCVBXCVB','[]','flat-mountains.svg','2025-06-23 10:59:53','2025-06-23 10:59:53');
+INSERT INTO `courses` VALUES (1,'d1cf78b0-4c1f-11f0-bd0b-c24f467165a7',1,'Programación Avanzada en Python','Conceptos avanzados y buenas prácticas en Python.','[]','flat-mountains.svg','2025-06-18 08:39:59','2025-06-25 11:21:56'),(2,'d1cf7ec8-4c1f-11f0-bd0b-c24f467165a7',2,'Diseño de Bases de Datos Relacionales','Desde el modelo entidad-relación hasta la normalización.','[]','bermuda-triangle.svg','2025-06-18 08:39:59','2025-06-25 11:22:36'),(3,'d1cf8058-4c1f-11f0-bd0b-c24f467165a7',3,'Introducción a Docker y Kubernetes','Contenedores y orquestación para desarrolladores.','[]','scattered-forcefields.svg','2025-06-18 08:39:59','2025-06-25 11:22:36'),(4,'d1cf813e-4c1f-11f0-bd0b-c24f467165a7',1,'Machine Learning con Scikit-Learn','Aprende a crear modelos predictivos en Python.','[\n  {\n    \"title\": \"Principios de diseño web\",\n    \"sections\": [\n      { \"title\": \"Teoría del color\" },\n      { \"title\": \"Tipografía\" },\n      { \"title\": \"Diseño responsivo\" }\n    ]\n  },\n  {\n    \"title\": \"HTML5 moderno\",\n    \"sections\": [\n      { \"title\": \"Estructura básica\" },\n      { \"title\": \"Elementos semánticos\" },\n      { \"title\": \"Formularios y validación\" }\n    ]\n  },\n  {\n    \"title\": \"CSS avanzado\",\n    \"sections\": [\n      { \"title\": \"Flexbox\" },\n      { \"title\": \"CSS Grid\" },\n      { \"title\": \"Animaciones y transiciones\" }\n    ]\n  }\n]','scattered-forcefields.svg','2025-06-18 08:39:59','2025-06-28 15:40:38'),(5,'d1cf821a-4c1f-11f0-bd0b-c24f467165a7',2,'Desarrollo Frontend con React.js','Crea interfaces de usuario interactivas y modernas.','[]','bermuda-triangle.svg','2025-06-18 08:39:59','2025-06-25 11:22:36'),(6,'d1cf82e2-4c1f-11f0-bd0b-c24f467165a7',3,'Ciberseguridad para Principiantes','Fundamentos de la seguridad informática.','[]','flat-mountains.svg','2025-06-18 08:39:59','2025-06-25 11:22:36'),(7,'d1cf83aa-4c1f-11f0-bd0b-c24f467165a7',1,'Testing de Software con Pytest','Asegura la calidad de tu código con tests automatizados.','[]','bermuda-triangle.svg','2025-06-18 08:39:59','2025-06-25 11:22:36'),(8,'d1cf847c-4c1f-11f0-bd0b-c24f467165a7',2,'Cloud Computing con AWS','Introducción a los servicios de Amazon Web Services.','[]','bermuda-diamond.svg','2025-06-18 08:39:59','2025-06-25 11:22:36'),(9,'d1cf854e-4c1f-11f0-bd0b-c24f467165a7',3,'Desarrollo de APIs REST con Node.js','Crea APIs robustas y escalables con Express.','[]','flat-mountains.svg','2025-06-18 08:39:59','2025-06-25 11:22:36'),(10,'d1cf8616-4c1f-11f0-bd0b-c24f467165a7',1,'Análisis de Datos con Pandas','Manipulación y análisis de datos de forma eficiente.','[]','scattered-forcefields.svg','2025-06-18 08:39:59','2025-06-25 11:22:36'),(11,'6895f317-a5e1-4cd5-90de-f3a2d7e7317d',1,'nfdsjf','faksdjflsakfdjlk','[]','scattered-forcefields.svg','2025-06-23 10:44:02','2025-06-23 10:44:02'),(12,'d7ab76cf-e10c-464c-9993-0a250470da19',1,'EFDSFSAs','FDSAFSAF','[]','e6eb86d6ebd98f9eed25c4607d62c937.png','2025-06-23 10:59:35','2025-06-25 11:47:00'),(13,'748dbc8e-0fe2-4acd-b395-f616384e368d',1,'FBVXBVC','BVXCVBXCVB','[]','flat-mountains.svg','2025-06-23 10:59:53','2025-06-23 10:59:53');
 /*!40000 ALTER TABLE `courses` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -67,6 +67,25 @@ DELIMITER ;;
             'flat-mountains.svg',
             'scattered-forcefields.svg'
         );
+    END IF;
+END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `trg_set_default_planning` BEFORE INSERT ON `courses` FOR EACH ROW BEGIN
+    IF NEW.planning IS NULL THEN
+        SET NEW.planning = '[]';
     END IF;
 END */;;
 DELIMITER ;
@@ -374,4 +393,6 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-06-28 20:21:20
+
+-- Dump completed on 2025-07-03 19:18:12
+
