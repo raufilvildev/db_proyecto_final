@@ -195,74 +195,6 @@ INSERT INTO `forum_threads` VALUES (1,'d1d03f70-4c1f-11f0-bd0b-c24f467165a7',1,4
 UNLOCK TABLES;
 
 --
--- Table structure for table `pomodoro`
---
-
-DROP TABLE IF EXISTS `pomodoro`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `pomodoro` (
-  `id` int unsigned NOT NULL AUTO_INCREMENT,
-  `uuid` char(36) NOT NULL,
-  `user_id` int unsigned NOT NULL,
-  `duration_mins` int NOT NULL DEFAULT '25',
-  `break_time` time NOT NULL DEFAULT '00:05:00',
-  `is_completed` tinyint NOT NULL DEFAULT '0',
-  `total_time` int NOT NULL DEFAULT '0' COMMENT 'Total time in minutes',
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `uuid` (`uuid`),
-  KEY `fk_pomodoro_user_id_idx` (`user_id`),
-  CONSTRAINT `fk_pomodoro_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `pomodoro`
---
-
-LOCK TABLES `pomodoro` WRITE;
-/*!40000 ALTER TABLE `pomodoro` DISABLE KEYS */;
-INSERT INTO `pomodoro` VALUES (1,'d1d0baf4-4c1f-11f0-bd0b-c24f467165a7',4,25,'00:05:00',1,25,'2025-06-18 08:39:59','2025-06-18 08:39:59'),(2,'d1d0bd24-4c1f-11f0-bd0b-c24f467165a7',5,50,'00:10:00',1,50,'2025-06-18 08:39:59','2025-06-18 08:39:59'),(3,'d1d0bdec-4c1f-11f0-bd0b-c24f467165a7',6,25,'00:05:00',0,15,'2025-06-18 08:39:59','2025-06-18 08:39:59'),(4,'d1d0be5a-4c1f-11f0-bd0b-c24f467165a7',7,45,'00:08:00',1,45,'2025-06-18 08:39:59','2025-06-18 08:39:59'),(5,'d1d0bebe-4c1f-11f0-bd0b-c24f467165a7',8,25,'00:05:00',1,25,'2025-06-18 08:39:59','2025-06-18 08:39:59'),(6,'d1d0bf68-4c1f-11f0-bd0b-c24f467165a7',9,30,'00:05:00',1,30,'2025-06-18 08:39:59','2025-06-18 08:39:59'),(7,'d1d0bfcc-4c1f-11f0-bd0b-c24f467165a7',10,60,'00:15:00',0,40,'2025-06-18 08:39:59','2025-06-18 08:39:59'),(8,'d1d0c030-4c1f-11f0-bd0b-c24f467165a7',4,25,'00:05:00',1,25,'2025-06-18 08:39:59','2025-06-18 08:39:59'),(9,'d1d0c0da-4c1f-11f0-bd0b-c24f467165a7',5,25,'00:05:00',1,25,'2025-06-18 08:39:59','2025-06-18 08:39:59'),(10,'d1d0c13e-4c1f-11f0-bd0b-c24f467165a7',6,50,'00:10:00',1,50,'2025-06-18 08:39:59','2025-06-18 08:39:59');
-/*!40000 ALTER TABLE `pomodoro` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `private_messages`
---
-
-DROP TABLE IF EXISTS `private_messages`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `private_messages` (
-  `id` int unsigned NOT NULL AUTO_INCREMENT,
-  `uuid` char(36) NOT NULL,
-  `sender_id` int unsigned NOT NULL,
-  `receiver_id` int unsigned NOT NULL,
-  `content` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `sent_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `uuid` (`uuid`),
-  KEY `fk_private_messages_sender_id_idx` (`sender_id`),
-  KEY `fk_private_messages_receiver_id_idx` (`receiver_id`),
-  CONSTRAINT `fk_private_messages_receiver_id` FOREIGN KEY (`receiver_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `fk_private_messages_sender_id` FOREIGN KEY (`sender_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `private_messages`
---
-
-LOCK TABLES `private_messages` WRITE;
-/*!40000 ALTER TABLE `private_messages` DISABLE KEYS */;
-INSERT INTO `private_messages` VALUES (1,'d1d07fbc-4c1f-11f0-bd0b-c24f467165a7',4,1,'Hola profe, ¿podría revisar mi práctica cuando tenga un momento?','2025-06-18 08:39:59','2025-06-18 08:39:59'),(2,'d1d081b0-4c1f-11f0-bd0b-c24f467165a7',5,2,'¡Gracias por la clase de hoy! Me quedó mucho más claro el concepto de claves foráneas.','2025-06-18 08:39:59','2025-06-18 08:39:59'),(3,'d1d08278-4c1f-11f0-bd0b-c24f467165a7',6,3,'Tengo problemas para instalar Kubernetes en mi Mac, ¿alguna recomendación?','2025-06-18 08:39:59','2025-06-18 08:39:59'),(4,'d1d08304-4c1f-11f0-bd0b-c24f467165a7',7,4,'¿Quieres hacer el trabajo de Machine Learning en equipo?','2025-06-18 08:39:59','2025-06-18 08:39:59'),(5,'d1d08386-4c1f-11f0-bd0b-c24f467165a7',8,5,'Te paso un enlace a un buen tutorial de React que encontré.','2025-06-18 08:39:59','2025-06-18 08:39:59'),(6,'d1d083fe-4c1f-11f0-bd0b-c24f467165a7',9,6,'Cuidado con los laboratorios de ciberseguridad, no vayas a atacar la red de la universidad.','2025-06-18 08:39:59','2025-06-18 08:39:59'),(7,'d1d08480-4c1f-11f0-bd0b-c24f467165a7',10,7,'¿Lograste configurar la VPC? A mí me está costando.','2025-06-18 08:39:59','2025-06-18 08:39:59'),(8,'d1d08502-4c1f-11f0-bd0b-c24f467165a7',1,4,'Claro, Mariana. La revisaré esta tarde y te daré feedback.','2025-06-18 08:39:59','2025-06-18 08:39:59'),(9,'d1d08584-4c1f-11f0-bd0b-c24f467165a7',2,5,'De nada, Juan. Me alegro de que te sirviera.','2025-06-18 08:39:59','2025-06-18 08:39:59'),(10,'d1d08610-4c1f-11f0-bd0b-c24f467165a7',3,6,'Te recomiendo usar Docker Desktop, ya incluye una versión de Kubernetes fácil de activar.','2025-06-18 08:39:59','2025-06-18 08:39:59');
-/*!40000 ALTER TABLE `private_messages` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `subtasks`
 --
 
@@ -309,7 +241,7 @@ CREATE TABLE `tasks` (
   `category` enum('custom','course_related') NOT NULL DEFAULT 'custom',
   `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
-  `due_date` datetime DEFAULT NULL,
+  `due_date` date DEFAULT NULL,
   `time_start` time DEFAULT NULL,
   `time_end` time DEFAULT NULL,
   `is_urgent` tinyint unsigned NOT NULL DEFAULT '0' COMMENT 'Para Matriz Eisenhower: 1 = Urgente, 0 = No Urgente',
@@ -394,4 +326,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-07-03 19:30:57
+-- Dump completed on 2025-07-04 13:51:08
