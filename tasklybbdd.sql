@@ -27,7 +27,7 @@ CREATE TABLE `courses` (
   `uuid` char(36) NOT NULL,
   `teacher_id` int unsigned NOT NULL,
   `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `description` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `description` text,
   `planning` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
   `course_image_url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT 'bermuda-diamond.svg',
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -326,5 +326,5 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 
--- Dump completed on 2025-07-04 14:13:30
+-- Dump completed on 2025-07-05 18:15:21
 
